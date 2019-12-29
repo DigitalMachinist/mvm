@@ -165,7 +165,9 @@ return [
         /*
          * Package Service Providers...
          */
+        Arcanedev\LogViewer\LogViewerServiceProvider::class,
         Clockwork\Support\Laravel\ClockworkServiceProvider::class,
+
 
         /*
          * Application Service Providers...

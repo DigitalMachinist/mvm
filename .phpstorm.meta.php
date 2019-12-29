@@ -5,13 +5,20 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2019-12-29 22:47:31.
+    * Generated on 2019-12-29 22:52:52.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
     */
     override(new \Illuminate\Contracts\Container\Container, map([
         '' => '@',
+        'Arcanedev\LogViewer\Contracts\LogViewer' => \Arcanedev\LogViewer\LogViewer::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\Factory' => \Arcanedev\LogViewer\Utilities\Factory::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\Filesystem' => \Arcanedev\LogViewer\Utilities\Filesystem::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogChecker' => \Arcanedev\LogViewer\Utilities\LogChecker::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogLevels' => \Arcanedev\LogViewer\Utilities\LogLevels::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogMenu' => \Arcanedev\LogViewer\Utilities\LogMenu::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogStyler' => \Arcanedev\LogViewer\Utilities\LogStyler::class,
         'Facade\IgnitionContracts\SolutionProviderRepository' => \Facade\Ignition\SolutionProviders\SolutionProviderRepository::class,
         'Facade\Ignition\DumpRecorder\DumpRecorder' => \Facade\Ignition\DumpRecorder\DumpRecorder::class,
         'Facade\Ignition\ErrorPage\Renderer' => \Facade\Ignition\ErrorPage\Renderer::class,
@@ -181,6 +188,13 @@ namespace PHPSTORM_META {
     ]));
     override(\Illuminate\Container\Container::makeWith(0), map([
         '' => '@',
+        'Arcanedev\LogViewer\Contracts\LogViewer' => \Arcanedev\LogViewer\LogViewer::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\Factory' => \Arcanedev\LogViewer\Utilities\Factory::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\Filesystem' => \Arcanedev\LogViewer\Utilities\Filesystem::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogChecker' => \Arcanedev\LogViewer\Utilities\LogChecker::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogLevels' => \Arcanedev\LogViewer\Utilities\LogLevels::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogMenu' => \Arcanedev\LogViewer\Utilities\LogMenu::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogStyler' => \Arcanedev\LogViewer\Utilities\LogStyler::class,
         'Facade\IgnitionContracts\SolutionProviderRepository' => \Facade\Ignition\SolutionProviders\SolutionProviderRepository::class,
         'Facade\Ignition\DumpRecorder\DumpRecorder' => \Facade\Ignition\DumpRecorder\DumpRecorder::class,
         'Facade\Ignition\ErrorPage\Renderer' => \Facade\Ignition\ErrorPage\Renderer::class,
@@ -350,6 +364,13 @@ namespace PHPSTORM_META {
     ]));
     override(\Illuminate\Contracts\Container\Container::make(0), map([
         '' => '@',
+        'Arcanedev\LogViewer\Contracts\LogViewer' => \Arcanedev\LogViewer\LogViewer::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\Factory' => \Arcanedev\LogViewer\Utilities\Factory::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\Filesystem' => \Arcanedev\LogViewer\Utilities\Filesystem::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogChecker' => \Arcanedev\LogViewer\Utilities\LogChecker::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogLevels' => \Arcanedev\LogViewer\Utilities\LogLevels::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogMenu' => \Arcanedev\LogViewer\Utilities\LogMenu::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogStyler' => \Arcanedev\LogViewer\Utilities\LogStyler::class,
         'Facade\IgnitionContracts\SolutionProviderRepository' => \Facade\Ignition\SolutionProviders\SolutionProviderRepository::class,
         'Facade\Ignition\DumpRecorder\DumpRecorder' => \Facade\Ignition\DumpRecorder\DumpRecorder::class,
         'Facade\Ignition\ErrorPage\Renderer' => \Facade\Ignition\ErrorPage\Renderer::class,
@@ -519,6 +540,13 @@ namespace PHPSTORM_META {
     ]));
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
         '' => '@',
+        'Arcanedev\LogViewer\Contracts\LogViewer' => \Arcanedev\LogViewer\LogViewer::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\Factory' => \Arcanedev\LogViewer\Utilities\Factory::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\Filesystem' => \Arcanedev\LogViewer\Utilities\Filesystem::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogChecker' => \Arcanedev\LogViewer\Utilities\LogChecker::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogLevels' => \Arcanedev\LogViewer\Utilities\LogLevels::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogMenu' => \Arcanedev\LogViewer\Utilities\LogMenu::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogStyler' => \Arcanedev\LogViewer\Utilities\LogStyler::class,
         'Facade\IgnitionContracts\SolutionProviderRepository' => \Facade\Ignition\SolutionProviders\SolutionProviderRepository::class,
         'Facade\Ignition\DumpRecorder\DumpRecorder' => \Facade\Ignition\DumpRecorder\DumpRecorder::class,
         'Facade\Ignition\ErrorPage\Renderer' => \Facade\Ignition\ErrorPage\Renderer::class,
@@ -688,6 +716,13 @@ namespace PHPSTORM_META {
     ]));
     override(\App::make(0), map([
         '' => '@',
+        'Arcanedev\LogViewer\Contracts\LogViewer' => \Arcanedev\LogViewer\LogViewer::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\Factory' => \Arcanedev\LogViewer\Utilities\Factory::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\Filesystem' => \Arcanedev\LogViewer\Utilities\Filesystem::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogChecker' => \Arcanedev\LogViewer\Utilities\LogChecker::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogLevels' => \Arcanedev\LogViewer\Utilities\LogLevels::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogMenu' => \Arcanedev\LogViewer\Utilities\LogMenu::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogStyler' => \Arcanedev\LogViewer\Utilities\LogStyler::class,
         'Facade\IgnitionContracts\SolutionProviderRepository' => \Facade\Ignition\SolutionProviders\SolutionProviderRepository::class,
         'Facade\Ignition\DumpRecorder\DumpRecorder' => \Facade\Ignition\DumpRecorder\DumpRecorder::class,
         'Facade\Ignition\ErrorPage\Renderer' => \Facade\Ignition\ErrorPage\Renderer::class,
@@ -857,6 +892,13 @@ namespace PHPSTORM_META {
     ]));
     override(\App::makeWith(0), map([
         '' => '@',
+        'Arcanedev\LogViewer\Contracts\LogViewer' => \Arcanedev\LogViewer\LogViewer::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\Factory' => \Arcanedev\LogViewer\Utilities\Factory::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\Filesystem' => \Arcanedev\LogViewer\Utilities\Filesystem::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogChecker' => \Arcanedev\LogViewer\Utilities\LogChecker::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogLevels' => \Arcanedev\LogViewer\Utilities\LogLevels::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogMenu' => \Arcanedev\LogViewer\Utilities\LogMenu::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogStyler' => \Arcanedev\LogViewer\Utilities\LogStyler::class,
         'Facade\IgnitionContracts\SolutionProviderRepository' => \Facade\Ignition\SolutionProviders\SolutionProviderRepository::class,
         'Facade\Ignition\DumpRecorder\DumpRecorder' => \Facade\Ignition\DumpRecorder\DumpRecorder::class,
         'Facade\Ignition\ErrorPage\Renderer' => \Facade\Ignition\ErrorPage\Renderer::class,
@@ -1026,6 +1068,13 @@ namespace PHPSTORM_META {
     ]));
     override(\app(0), map([
         '' => '@',
+        'Arcanedev\LogViewer\Contracts\LogViewer' => \Arcanedev\LogViewer\LogViewer::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\Factory' => \Arcanedev\LogViewer\Utilities\Factory::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\Filesystem' => \Arcanedev\LogViewer\Utilities\Filesystem::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogChecker' => \Arcanedev\LogViewer\Utilities\LogChecker::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogLevels' => \Arcanedev\LogViewer\Utilities\LogLevels::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogMenu' => \Arcanedev\LogViewer\Utilities\LogMenu::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogStyler' => \Arcanedev\LogViewer\Utilities\LogStyler::class,
         'Facade\IgnitionContracts\SolutionProviderRepository' => \Facade\Ignition\SolutionProviders\SolutionProviderRepository::class,
         'Facade\Ignition\DumpRecorder\DumpRecorder' => \Facade\Ignition\DumpRecorder\DumpRecorder::class,
         'Facade\Ignition\ErrorPage\Renderer' => \Facade\Ignition\ErrorPage\Renderer::class,
@@ -1195,6 +1244,13 @@ namespace PHPSTORM_META {
     ]));
     override(\resolve(0), map([
         '' => '@',
+        'Arcanedev\LogViewer\Contracts\LogViewer' => \Arcanedev\LogViewer\LogViewer::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\Factory' => \Arcanedev\LogViewer\Utilities\Factory::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\Filesystem' => \Arcanedev\LogViewer\Utilities\Filesystem::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogChecker' => \Arcanedev\LogViewer\Utilities\LogChecker::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogLevels' => \Arcanedev\LogViewer\Utilities\LogLevels::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogMenu' => \Arcanedev\LogViewer\Utilities\LogMenu::class,
+        'Arcanedev\LogViewer\Contracts\Utilities\LogStyler' => \Arcanedev\LogViewer\Utilities\LogStyler::class,
         'Facade\IgnitionContracts\SolutionProviderRepository' => \Facade\Ignition\SolutionProviders\SolutionProviderRepository::class,
         'Facade\Ignition\DumpRecorder\DumpRecorder' => \Facade\Ignition\DumpRecorder\DumpRecorder::class,
         'Facade\Ignition\ErrorPage\Renderer' => \Facade\Ignition\ErrorPage\Renderer::class,

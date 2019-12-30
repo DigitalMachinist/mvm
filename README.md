@@ -1,24 +1,30 @@
 # mvm
-A tool for mapping out and analyzing 2D metroidvania games where progression depends on locks and keys.
 
+A tool for mapping out and analyzing 2D metroidvania games where progression depends on locks and keys.
 
 ## Backend Tools
 
 Laravel IDE symbol maps are auto-generated on `composer update`.
 
-To lint the app for style issues:
+To run tests:
 
+```bash
+phpunit
 ```
+
+To lint the app for style issues (only for the current diff without `-all`):
+
+```bash
 composer run lint[-all]
 ```
 
 To run static analysis:
 
-```
+```bash
 composer run psalm
 ```
 
-See [http://mvm.test/__clockwork](khttp://mvm.test/__clockwork) to view performance info.
+See [http://mvm.test/__clockwork](http://mvm.test/__clockwork) to view performance info.
 
 See [http://mvm.test/log-viewer](http://mvm.test/log-viewer) to view the activity log.
 

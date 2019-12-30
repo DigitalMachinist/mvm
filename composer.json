@@ -77,8 +77,7 @@
     "scripts": {
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "@php artisan ide-helper:generate --ansi",
-            "@php artisan ide-helper:meta --ansi"
+            "composer run update-symbols"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
@@ -99,14 +98,9 @@
         "psalm": [
             "./vendor/bin/psalm"
         ],
-		"docker-up": [
-			"cd laradock;docker-compose up -d nginx mysql redis workspace;cd .."
-		],
-		"docker-down": [
-			"cd laradock;docker-compose down; cd .."
-		],
-		"docker-logs": [
-			"cd laradock;docker-compose logs; cd .."
-		]
+        "update-symbols": [
+            "@php artisan ide-helper:generate --ansi",
+            "@php artisan ide-helper:meta --ansi"
+        ]
     }
 }

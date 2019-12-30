@@ -13,3 +13,4 @@ yarn-error.log
 
 ## Laravel IDE Helper
 _ide_helper.*
+.phpstorm.meta.php

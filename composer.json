@@ -10,9 +10,12 @@
     "require": {
         "php": "^7.2",
         "arcanedev/log-viewer": "^5.1",
+        "bugsnag/bugsnag-laravel": "^2.0",
         "fideloper/proxy": "^4.0",
         "itsgoingd/clockwork": "^4.0",
+        "jrm2k6/cloudder": "^0.6.0",
         "laravel/framework": "^6.2",
+        "laravel/socialite": "^4.3",
         "laravel/telescope": "^2.1",
         "laravel/tinker": "^2.0",
         "spatie/data-transfer-object": "^1.12",

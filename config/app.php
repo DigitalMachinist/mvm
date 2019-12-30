@@ -169,6 +169,7 @@ return [
         Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
         Clockwork\Support\Laravel\ClockworkServiceProvider::class,
         JD\Cloudder\CloudderServiceProvider::class,
+        \SocialiteProviders\Manager\ServiceProvider::class,
 
 
         /*

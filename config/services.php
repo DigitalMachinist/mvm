@@ -33,13 +33,13 @@ return [
     'discord' => [
         'client_id'     => env('DISCORD_KEY'),
         'client_secret' => env('DISCORD_SECRET'),
-        'redirect'      => env('DISCORD_REDIRECT_URI')
+        'redirect'      => env('DISCORD_REDIRECT_URI'),
     ],
 
     'github' => [
         'client_id'     => env('GITHUB_KEY'),
         'client_secret' => env('GITHUB_SECRET'),
-        'redirect'      => env('GITHUB_REDIRECT_URI')
+        'redirect'      => env('GITHUB_REDIRECT_URI'),
     ],
 
     'google' => [
@@ -51,30 +51,30 @@ return [
     'reddit' => [
         'client_id'     => env('REDDIT_KEY'),
         'client_secret' => env('REDDIT_SECRET'),
-        'redirect'      => env('REDDIT_REDIRECT_URI')
+        'redirect'      => env('REDDIT_REDIRECT_URI'),
     ],
 
     'slack' => [
         'client_id'     => env('SLACK_KEY'),
         'client_secret' => env('SLACK_SECRET'),
-        'redirect'      => env('SLACK_REDIRECT_URI')
+        'redirect'      => env('SLACK_REDIRECT_URI'),
     ],
 
     'steam' => [
         'client_id'     => env('STEAM_KEY'),
         'client_secret' => env('STEAM_SECRET'),
-        'redirect'      => env('STEAM_REDIRECT_URI')
+        'redirect'      => env('STEAM_REDIRECT_URI'),
     ],
 
     'twitch' => [
         'client_id'     => env('TWITCH_KEY'),
         'client_secret' => env('TWITCH_SECRET'),
-        'redirect'      => env('TWITCH_REDIRECT_URI')
+        'redirect'      => env('TWITCH_REDIRECT_URI'),
     ],
 
     'twitter' => [
         'client_id'     => env('TWITTER_KEY'),
         'client_secret' => env('TWITTER_SECRET'),
-        'redirect'      => env('TWITTER_REDIRECT_URI')
+        'redirect'      => env('TWITTER_REDIRECT_URI'),
     ],
 ];

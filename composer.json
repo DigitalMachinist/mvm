@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "algolia/scout-extended": "^1.8",
         "arcanedev/log-viewer": "^5.1",
         "bugsnag/bugsnag-laravel": "^2.0",
         "fideloper/proxy": "^4.0",
@@ -39,7 +40,8 @@
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^8.0"
+        "phpunit/phpunit": "^8.0",
+        "tightenco/tlint": "^3.0"
     },
     "config": {
         "optimize-autoloader": true,
@@ -72,8 +74,8 @@
     "scripts": {
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "@php artisan ide-helper:generate",
-            "@php artisan ide-helper:meta"
+            "@php artisan ide-helper:generate --ansi",
+            "@php artisan ide-helper:meta --ansi"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
@@ -84,6 +86,12 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "lint": [
+            "vendor/tightenco/tlint/bin/tlint lint app --diff --ansi"
+        ],
+        "lint-all": [
+            "vendor/tightenco/tlint/bin/tlint lint app --ansi"
         ]
     }
 }

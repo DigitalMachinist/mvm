@@ -16,6 +16,7 @@
         "itsgoingd/clockwork": "^4.0",
         "jrm2k6/cloudder": "^0.6.0",
         "laravel/framework": "^6.2",
+        "laravel/horizon": "^3.4",
         "laravel/socialite": "^4.3",
         "laravel/telescope": "^2.1",
         "laravel/tinker": "^2.0",
@@ -41,7 +42,9 @@
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
         "phpunit/phpunit": "^8.0",
-        "tightenco/tlint": "^3.0"
+        "psalm/plugin-laravel": "^1.0",
+        "tightenco/tlint": "^3.0",
+        "vimeo/psalm": "^3.8"
     },
     "config": {
         "optimize-autoloader": true,
@@ -88,10 +91,13 @@
             "@php artisan key:generate --ansi"
         ],
         "lint": [
-            "vendor/tightenco/tlint/bin/tlint lint app --diff --ansi"
+            "./vendor/tightenco/tlint/bin/tlint lint app --diff --ansi"
         ],
         "lint-all": [
-            "vendor/tightenco/tlint/bin/tlint lint app --ansi"
+            "./vendor/tightenco/tlint/bin/tlint lint app --ansi"
+        ],
+        "psalm": [
+            "./vendor/bin/psalm"
         ]
     }
 }

@@ -9,7 +9,13 @@ Laravel IDE symbol maps are auto-generated on `composer update`.
 To lint the app for style issues:
 
 ```
-tlint link app [--diff]
+composer run lint[-all]
+```
+
+To run static analysis:
+
+```
+composer run psalm
 ```
 
 See [http://mvm.test/__clockwork](khttp://mvm.test/__clockwork) to view performance info.

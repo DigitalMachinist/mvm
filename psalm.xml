@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<psalm
+    totallyTyped="false"
+    resolveFromConfigFile="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+>
+    <projectFiles>
+        <directory name="app"/>
+        <directory name="domain"/>
+        <directory name="support"/>
+        <ignoreFiles>
+            <directory name="vendor"/>
+        </ignoreFiles>
+    </projectFiles>
+
+    <issueHandlers>
+        <LessSpecificReturnStatement>
+            <errorLevel type="suppress">
+                <file name="app/Exceptions/Handler.php" />
+            </errorLevel>
+        </LessSpecificReturnStatement>
+        <MixedInferredReturnType>
+            <errorLevel type="suppress">
+                <file name="app/Http/Controllers/Auth/RegisterController.php" />
+            </errorLevel>
+        </MixedInferredReturnType>
+        <MixedMethodCall>
+            <errorLevel type="suppress">
+                <file name="app/Providers/RouteServiceProvider.php" />
+            </errorLevel>
+        </MixedMethodCall>
+        <MixedReturnStatement>
+            <errorLevel type="suppress">
+                <file name="app/Http/Controllers/Auth/RegisterController.php" />
+            </errorLevel>
+        </MixedReturnStatement>
+        <MoreSpecificReturnType>
+            <errorLevel type="suppress">
+                <file name="app/Exceptions/Handler.php" />
+            </errorLevel>
+        </MoreSpecificReturnType>
+        <PropertyNotSetInConstructor>
+            <errorLevel type="suppress">
+                <file name="app/Console/Kernel.php" />
+                <file name="app/Http/Middleware/TrustProxies.php" />
+                <file name="app/User.php" />
+            </errorLevel>
+        </PropertyNotSetInConstructor>
+        <UnresolvableInclude>
+            <errorLevel type="suppress">
+                <file name="app/Console/Kernel.php" />
+                <file name="app/Providers/BroadcastServiceProvider.php" />
+            </errorLevel>
+        </UnresolvableInclude>
+
+        <LessSpecificReturnType errorLevel="info"/>
+
+        <!-- level 3 issues - slightly lazy code writing, but provably low false-negatives -->
+
+        <DeprecatedMethod errorLevel="info"/>
+        <DeprecatedProperty errorLevel="info"/>
+        <DeprecatedClass errorLevel="info"/>
+        <DeprecatedConstant errorLevel="info"/>
+        <DeprecatedFunction errorLevel="info"/>
+        <DeprecatedInterface errorLevel="info"/>
+        <DeprecatedTrait errorLevel="info"/>
+
+        <InternalMethod errorLevel="info"/>
+        <InternalProperty errorLevel="info"/>
+        <InternalClass errorLevel="info"/>
+
+        <MissingClosureReturnType errorLevel="info"/>
+        <MissingReturnType errorLevel="info"/>
+        <MissingPropertyType errorLevel="info"/>
+        <InvalidDocblock errorLevel="info"/>
+        <MisplacedRequiredParam errorLevel="info"/>
+
+        <PropertyNotSetInConstructor errorLevel="info"/>
+        <MissingConstructor errorLevel="info"/>
+        <MissingClosureParamType errorLevel="info"/>
+        <MissingParamType errorLevel="info"/>
+
+        <RedundantCondition errorLevel="info"/>
+
+        <DocblockTypeContradiction errorLevel="info"/>
+        <RedundantConditionGivenDocblockType errorLevel="info"/>
+
+        <UnresolvableInclude errorLevel="info"/>
+
+        <RawObjectIteration errorLevel="info"/>
+
+        <InvalidStringClass errorLevel="info"/>
+    </issueHandlers>
+<plugins><pluginClass class="Psalm\LaravelPlugin\Plugin"/></plugins></psalm>

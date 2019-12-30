@@ -2,14 +2,42 @@
 
 A tool for mapping out and analyzing 2D metroidvania games where progression depends on locks and keys.
 
+## Getting started
+
+```bash
+git clone git@github.com:DigitalMachinist/mvm.git
+git submodule update --init --recursive
+composer install
+npm install
+composer run docker-up
+```
+
 ## Backend Tools
 
 Laravel IDE symbol maps are auto-generated on `composer update`.
 
-To run tests:
+This project uses [Laradock](https://laradock.io/) to host a local dev environment via docker. The laradock project is linked as a submodule and can be updated/pulled using:
 
 ```bash
-phpunit
+git submodule update --init --recursive
+```
+
+To start hosting the app via docker:
+
+```bash
+composer run docker-up
+```
+
+To stop docker:
+
+```bash
+composer run docker-down
+```
+
+To dump out the docker network logs:
+
+```bash
+composer run docker-logs
 ```
 
 To lint the app for style issues (only for the current diff without `-all`):
@@ -22,6 +50,12 @@ To run static analysis:
 
 ```bash
 composer run psalm
+```
+
+To run tests:
+
+```bash
+phpunit
 ```
 
 See [http://mvm.test/__clockwork](http://mvm.test/__clockwork) to view performance info.

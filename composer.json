@@ -98,6 +98,15 @@
         ],
         "psalm": [
             "./vendor/bin/psalm"
-        ]
+        ],
+		"docker-up": [
+			"cd laradock;docker-compose up -d nginx mysql redis workspace;cd .."
+		],
+		"docker-down": [
+			"cd laradock;docker-compose down; cd .."
+		],
+		"docker-logs": [
+			"cd laradock;docker-compose logs; cd .."
+		]
     }
 }

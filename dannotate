@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+cd laradock &&
+docker-compose exec --user=laradock workspace php artisan ide-helper:generate --ansi
+docker-compose exec --user=laradock workspace php artisan ide-helper:meta --ansi
+docker-compose exec --user=laradock workspace php artisan ide-helper:models --write --ansi
+cd ..

@@ -41,36 +41,26 @@ These bash commands exist as shorthands to the most common `docker-conpose` comm
 
 | Command           | Description |
 |-------------------|-------------|
-| ./dup             | Start the docker container (begin hosting at [http://localhost](http://localhost)). |
+| ./danalyze        | Run static analysis on the whole app. |
+| ./dannotate       | Update code symbols for use by pslam and Intelliphense. |
+| ./dbash           | Open a bash terminal within the docker container to execute bash commands. |
+| ./dcreatedatabase | Create a new database and run migrations. |
+| ./dcreatekey      | Generate a new application key. |
 | ./ddown           | Stop the docker container. |
-| ./dlist           | List out the docker containers running in this network. |
-| ./dlogs           | Display the docker network logs. |
-| ./dterminal       | Open a bash terminal within the docker container to execute commands. |
-| ./dtinker         | Open an artisan tinker terminal within the docker container to REPL PHP commands. |
 | ./dhorizon        | Start Horizon within the docker container to process queued jobs for all queues. |
 | ./dinstall        | Composer install within the docker container to fetch dependencies.
 | ./dinstallquiet   | Composer install withing the docker conttainer to fetch dependencies silently and non-interactively. |
-| ./dcreatekey      | Generate a new application key. |
-| ./dcreatedatabase | Create a new database and run migrations. |
-| ./dtest           | Run phpunit tests on the whole app. |
-| ./danalyze        | Run static analysis on the whole app. |
 | ./dlint           | Style guide validate only the current diff. |
 | ./dlinteverything | Style guide validate the whole app. |
+| ./dlist           | List out the docker containers running in this network. |
+| ./dlogs           | Display the docker network logs. |
+| ./dmysql          | Open a mysql terminal within the docker container to execute SQL commamnds. |
+| ./dredis          | Open a redis terminal within the docker container to execute Redis commamnds. |
+| ./dtest           | Run phpunit tests on the whole app. |
+| ./dtinker         | Open an artisan tinker terminal within the docker container to execute PHP commands. |
+| ./dup             | Start the docker container (begin hosting at [http://localhost](http://localhost)). |
 
-### Composer commands
-
-These composer commands help with development tasks related to code quality and testing.
-
-***Composer commands need to be run on the docker container, so run `./dbash` before executing any of these. Yes, this includes `composer install`, `composer update` and `composer dump-autoload`.***
-
-| Command                     | Description |
-|-----------------------------|-------------|
-| composer run lint           | Perform style checks on the entire app. |
-| composer run lint-all       | Perform style checks only on the current diff. |
-| composer run psalm          | Perform static analysis on the app. |
-| composer run update-symbols | Update the symbols used by psalm for code hinting. |
-
-### Internal Dashboards
+### Dashboards
 
 These dashboards are part of the app and are only live when the app is hosted.
 
@@ -80,8 +70,6 @@ These dashboards are part of the app and are only live when the app is hosted.
 | Clockwork   | [http://localhost/__clockwork](http://localhost/__clockwork) |
 | Horizon     | [http://localhost/horizon](http://localhost/horizon) |
 | Telescope   | [http://localhost/telescope](http://localhost/telescope) |
-
-### External Dashboards
 
 These dashboards are offered by external services, so you'll need login creds to get to these.
 

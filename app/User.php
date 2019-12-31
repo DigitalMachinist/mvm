@@ -36,4 +36,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The database table backing this model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
 }

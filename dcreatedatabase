@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 cd laradock &&
-docker-compose exec --user=laradock workspace mysql -uroot -e 'CREATE DATABASE mvm_testing CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci'
+echo 'Create database'
+docker-compose exec --user=root mysql mysql -uroot -proot --silent --execute 'CREATE DATABASE mvm CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci'
+echo 'Migrate tables'
 docker-compose exec --user=laradock workspace php artisan migrate
 cd ..

@@ -8,11 +8,9 @@ A tool for mapping out and analyzing 2D metroidvania games where progression dep
 git clone git@github.com:DigitalMachinist/mvm.git
 git submodule update --init --recursive
 ./dup
-./dbash
-# We're now in the docker container's bash context.
-composer install
-exit
-# We're now back in the host machine's terminal context.
+./dinstall
+./dcreatekey
+./dtestdatabase
 ```
 
 ## Laradock/Docker
@@ -78,3 +76,24 @@ These dashboards are offered by external services, so you'll need login creds to
 | Algolia     | [https://www.algolia.com/apps/Z0DB271DZ3/dashboard](https://www.algolia.com/apps/Z0DB271DZ3/dashboard) |
 | Bugsnag     | [https://app.bugsnag.com/axon-interactive/mvm](https://app.bugsnag.com/axon-interactive/mvm) |
 | Cloudinary  | [https://cloudinary.com/console/welcome](https://cloudinary.com/console/welcome) |
+
+### Local MySQL Connection
+
+To connect to `mysqld` within the docker container from your host machine, use the following creds in **Sequel Pro** or whatever:
+
+```env
+DB_HOST=0.0.0.0
+DB_PORT=13306
+DB_DATABASE=mvm
+DB_USERNAME=root
+DB_PASSWORD=root
+```
+
+### Local Redis Connection
+
+To connect to `redis` within the docker container from your host machine, use the following creds in **RDM** or whatever:
+
+```env
+REDIS_HOST=0.0.0.0
+REDIS_PORT=16379
+```

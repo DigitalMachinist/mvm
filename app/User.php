@@ -42,6 +42,11 @@ use Illuminate\Notifications\Notifiable;
  * @property \Illuminate\Support\Carbon|null $createdAt
  * @property \Illuminate\Support\Carbon|null $updatedAt
  * @property-read int|null $notificationsCount
+ * @property \Illuminate\Support\Carbon|null $emailVerifiedAt
+ * @property string|null $rememberToken
+ * @property \Illuminate\Support\Carbon|null $createdAt
+ * @property \Illuminate\Support\Carbon|null $updatedAt
+ * @property-read int|null $notificationsCount
  */
 class User extends Authenticatable
 {

@@ -76,7 +76,7 @@
     "prefer-stable": true,
     "scripts": {
         "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

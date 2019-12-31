@@ -41,7 +41,9 @@ Laravel IDE symbol maps are auto-generated on `composer update`.
 
 ### Bash commands
 
-These bash commands exist as shorthands to the most common `docker-conpose` commands that I need to run on the docker container.
+These bash commands exist as shorthands to the most common `docker-compose` commands that I need to run on the docker container.
+
+***If you run composer/artisan/etc commands outside of the docker container you can expect to have problems! Use these!***
 
 | Command         | Description |
 |-----------------|-------------|
@@ -103,3 +105,22 @@ To connect to `redis` within the docker container from your host machine, use th
 REDIS_HOST=0.0.0.0
 REDIS_PORT=16379
 ```
+
+### 3rd party packages I'm using
+
+- [bugsnag/bugsnag-laravel](https://github.com/bugsnag/bugsnag-laravel)
+- [itsgoingd/clockwork](https://github.com/itsgoingd/clockwork)
+- [jrm2k6/cloudder](https://github.com/jrm2k6/cloudder)
+- [laradock/laradock](https://github.com/laradock/laradock)
+- [spatie/data-transfer-object](https://github.com/spatie/data-transfer-object)
+- [spatie/laravel-activitylog](https://github.com/spatie/laravel-activitylog)
+- [spatie/laravel-enum](https://github.com/spatie/laravel-enum)
+- [spatie/laravel-model-states](https://github.com/spatie/laravel-model-states)
+- [spatie/laravel-queueable-action](https://github.com/spatie/laravel-queueable-action)
+
+#### Dev only packages
+
+- [barryvdh/laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper)
+- [psalm/laravel-psalm-plugin](https://github.com/psalm/laravel-psalm-plugin)
+- [tightenco/tlint](https://github.com/tightenco/tlint)
+- [vimeo/psalm](https://github.com/vimeo/psalm)

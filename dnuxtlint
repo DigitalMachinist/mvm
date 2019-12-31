@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+cd laradock &&
+docker-compose exec --user=laradock workspace ./node_modules/.bin/eslint --fix --ext .js,.vue ./client/
+cd ..

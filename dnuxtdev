@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+cd laradock &&
+docker-compose exec --user=laradock workspace npm run dev
+cd ..

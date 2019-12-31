@@ -39,15 +39,23 @@ Laravel IDE symbol maps are auto-generated on `composer update`.
 
 These bash commands exist as shorthands to the most common `docker-conpose` commands that I need to run on the docker container.
 
-| Command | Description |
-|---------|-------------|
-| ./dup   | Start the docker container (begin hosting at [http://localhost](http://localhost)). |
-| ./ddown | Stop the docker container. |
-| ./dps   | List out the docker containers running in this network. |
-| ./dlogs | Dump the docker logs. |
-| ./dbash | Run bash within the docker container to execute terminal commands. |
-| ./dtink | Run tinker within the docker container to REPL PHP commands. |
-| ./dwork | Start Horizon running to handle queued jobs from Laravel. |
+| Command           | Description |
+|-------------------|-------------|
+| ./dup             | Start the docker container (begin hosting at [http://localhost](http://localhost)). |
+| ./ddown           | Stop the docker container. |
+| ./dlist           | List out the docker containers running in this network. |
+| ./dlogs           | Display the docker network logs. |
+| ./dterminal       | Open a bash terminal within the docker container to execute commands. |
+| ./dtinker         | Open an artisan tinker terminal within the docker container to REPL PHP commands. |
+| ./dhorizon        | Start Horizon within the docker container to process queued jobs for all queues. |
+| ./dinstall        | Composer install within the docker container to fetch dependencies.
+| ./dinstallquiet   | Composer install withing the docker conttainer to fetch dependencies silently and non-interactively. |
+| ./dcreatekey      | Generate a new application key. |
+| ./dcreatedatabase | Create a new database and run migrations. |
+| ./dtest           | Run phpunit tests on the whole app. |
+| ./danalyze        | Run static analysis on the whole app. |
+| ./dlint           | Style guide validate only the current diff. |
+| ./dlinteverything | Style guide validate the whole app. |
 
 ### Composer commands
 

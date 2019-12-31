@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+cd laradock &&
+docker-compose exec --user=laradock workspace ./vendor/tightenco/tlint/bin/tlint lint app --diff --ansi
+cd ..

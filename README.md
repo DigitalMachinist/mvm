@@ -4,20 +4,38 @@ A tool for mapping out and analyzing 2D metroidvania games where progression dep
 
 ## Getting started
 
+### Check out the project
+
 ```bash
 git clone git@github.com:DigitalMachinist/mvm.git
 git submodule update --init --recursive
+cp .env.example .env
+cp laradock.env ./laradock/.env
+```
+
+### Spin up the backend
+
+After completing the steps above to check out the project files:
+
+```bash
 ./dup
 ./dinstall
 ./dcreatekey
-./dtestdatabase
+./dcreatedatabase
 ```
 
-Copy `.env.example` to `.env`.
+Visit `http://localhost` in your browser to confirm the backend is being hosted.
 
-Visit `http://localhost` in your browser.
+### Spin up the frontend
 
-You're good to go!
+After complting the steps above to get the backend working:
+
+```bash
+./dnuxtinstall
+./dnuxtdev
+```
+
+Visit `http://localhost:3000` in your browser to confirm the frontend is being hosted.
 
 ## Laradock/Docker
 
@@ -25,7 +43,9 @@ This project uses [Laradock](https://laradock.io/) to host a local dev environme
 
 When the docker container is running, visit [http://localhost](http://localhost) to open the app in the browser. You can start the docker container with the `./dup` command, which is outlined below.
 
-*Note: I had to remove the --with-libzip argument from a line in ./laradock/php-fpm/Dockerfile to allow PHP 7.4 to be installed withour errors!*
+*Note: I had to remove the --with-libzip argument from a line in ./laradock/php-fpm/Dockerfile to allow PHP 7.4 to be built withour errors!*
+
+*Note: I had to add a port export of `3000:3000` to the workspace container's docker-compose.yml to allow the host machine to view the frontend at [http://localhost:3000](http://localhost:3000).*
 
 The laradock project is linked as a submodule and can be updated/pulled using:
 
@@ -33,40 +53,38 @@ The laradock project is linked as a submodule and can be updated/pulled using:
 git submodule update --init --recursive
 ```
 
-## Backend Stuff
-
-This section covers a bunch of commands and notes regarding the backend configureation and features of the app.
-
-Laravel IDE symbol maps are auto-generated on `composer update`.
-
-### Bash commands
+## Bash commands
 
 These bash commands exist as shorthands to the most common `docker-compose` commands that I need to run on the docker container.
 
 ***If you run composer/artisan/etc commands outside of the docker container you can expect to have problems! Use these!***
 
-| Command         | Description |
-|-----------------|-------------|
-| danalyze        | Run static analysis on the whole app. |
-| dannotate       | Update code symbols for use by pslam and Intelliphense. |
-| dbash           | Open a bash terminal within the docker container to execute bash commands. |
-| dcreatedatabase | Create a new database and run migrations. |
-| dcreatekey      | Generate a new application key. |
-| ddown           | Stop the docker container. |
-| dhorizon        | Start Horizon within the docker container to process queued jobs for all queues. |
-| dinstall        | Composer install within the docker container to fetch dependencies.
-| dinstallquiet   | Composer install withing the docker conttainer to fetch dependencies silently and non-interactively. |
-| dlint           | Style guide validate only the current diff. |
-| dlinteverything | Style guide validate the whole app. |
-| dlist           | List out the docker containers running in this network. |
-| dlogs           | Display the docker network logs. |
-| dmysql          | Open a mysql terminal within the docker container to execute SQL commamnds. |
-| dredis          | Open a redis terminal within the docker container to execute Redis commamnds. |
-| dtest           | Run phpunit tests on the whole app. |
-| dtinker         | Open an artisan tinker terminal within the docker container to execute PHP commands. |
-| dup             | Start the docker container (begin hosting at [http://localhost](http://localhost)). |
+| Command         | Interactive? | Description |
+|-----------------|--------------|-------------|
+| danalyze        | No           | Run static analysis on the whole app. |
+| dannotate       | No           | Update code symbols for use by pslam and Intelliphense. |
+| dbash           | Yes          | Open a bash terminal within the docker container to execute bash commands. |
+| dcreatedatabase | No           | Create a new database and run migrations. |
+| dcreatekey      | No           | Generate a new application key. |
+| ddown           | No           | Stop the docker container. |
+| dhorizon        | Yes          | Start Horizon within the docker container to process queued jobs for all queues. |
+| dinstall        | No           | Composer install within the docker container to fetch dependencies.
+| dinstallquiet   | No           | Composer install withing the docker conttainer to fetch dependencies silently and non-interactively. |
+| dlint           | No           | Style guide validate PHP files only from the current diff. |
+| dlinteverything | No           | Style guide validate PHP files across the whole app. |
+| dlist           | No           | List out the docker containers running in this network. |
+| dlogs           | No           | Display the docker network logs. |
+| dmysql          | Yes          | Open a mysql terminal within the docker container to execute SQL commamnds. |
+| dnuxtbuild      | No           | Build the nuxt frontend app files. |
+| dnuxtdev        | Yes          | Build & start the nuxt frontend app (begin hosting the frontend at [http://localhost:3000](http://localhost:3000)) and watch for changes. |
+| dnuxtlint       | No           | Style guide validate nuxt frontend files. |
+| dnuxtstart      | Yes          | Start the nuxt frontend app (begin hosting the frontend at [http://localhost:3000](http://localhost:3000)). |
+| dredis          | Yes          | Open a redis terminal within the docker container to execute Redis commamnds. |
+| dtest           | No           | Run phpunit tests on the whole app. |
+| dtinker         | Yes          | Open an artisan tinker terminal within the docker container to execute PHP commands. |
+| dup             | No           | Start the docker container (begin hosting the backend at [http://localhost](http://localhost)). |
 
-### Dashboards
+## Dashboards
 
 These dashboards are part of the app and are only live when the app is hosted.
 
@@ -85,7 +103,7 @@ These dashboards are offered by external services, so you'll need login creds to
 | Bugsnag     | [https://app.bugsnag.com/axon-interactive/mvm](https://app.bugsnag.com/axon-interactive/mvm) |
 | Cloudinary  | [https://cloudinary.com/console/welcome](https://cloudinary.com/console/welcome) |
 
-### Local MySQL Connection
+## Local MySQL Connection
 
 To connect to `mysqld` within the docker container from your host machine, use the following creds in **Sequel Pro** or whatever:
 
@@ -97,7 +115,7 @@ DB_USERNAME=root
 DB_PASSWORD=root
 ```
 
-### Local Redis Connection
+## Local Redis Connection
 
 To connect to `redis` within the docker container from your host machine, use the following creds in **RDM** or whatever:
 
@@ -105,6 +123,12 @@ To connect to `redis` within the docker container from your host machine, use th
 REDIS_HOST=0.0.0.0
 REDIS_PORT=16379
 ```
+
+## Backend Notes
+
+This app's backend structure is based off of [Laravel Beyond CRUD](https://stitcher.io/blog/laravel-beyond-crud), which details the structure of projects at Spatie in reasonable detail. I'll be leaning on these patterns and spatie packages heavily here.
+
+PHP code symbol maps are auto-generated on `composer update`, `composer install` and after `git checkout`.
 
 ### 3rd party packages I'm using
 
@@ -124,3 +148,7 @@ REDIS_PORT=16379
 - [psalm/laravel-psalm-plugin](https://github.com/psalm/laravel-psalm-plugin)
 - [tightenco/tlint](https://github.com/tightenco/tlint)
 - [vimeo/psalm](https://github.com/vimeo/psalm)
+
+## Frontend Notes
+
+This app's frontend is based off of [Laravel-Nuxt](https://github.com/cretueusebiu/laravel-nuxt), so feel free to check their documentation regarding any issues with the frontend setup.

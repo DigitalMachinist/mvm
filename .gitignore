@@ -11,6 +11,14 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 
+# Nuxt
+.nuxt
+/dist
+/public/_nuxt
+
+# VS Code
+*.code-workspace
+
 ## Laravel IDE Helper
 _ide_helper.*
 .phpstorm.meta.php

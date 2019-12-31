@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - name: Checkout submodules
+      run: git submodule update --init --recursive
     - name: Create .env from .env.ci
       run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
     - name: Start docker container

@@ -8,9 +8,7 @@ A tool for mapping out and analyzing 2D metroidvania games where progression dep
 
 ```bash
 git clone git@github.com:DigitalMachinist/mvm.git
-git submodule update --init --recursive
 cp .env.example .env
-cp laradock.env ./laradock/.env
 ```
 
 ### Spin up the backend
@@ -46,12 +44,6 @@ When the docker container is running, visit [http://localhost](http://localhost)
 *Note: I had to remove the --with-libzip argument from a line in ./laradock/php-fpm/Dockerfile to allow PHP 7.4 to be built withour errors!*
 
 *Note: I had to add a port export of `3000:3000` to the workspace container's docker-compose.yml to allow the host machine to view the frontend at [http://localhost:3000](http://localhost:3000).*
-
-The laradock project is linked as a submodule and can be updated/pulled using:
-
-```bash
-git submodule update --init --recursive
-```
 
 ## Bash commands
 

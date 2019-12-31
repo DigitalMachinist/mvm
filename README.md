@@ -13,6 +13,12 @@ git submodule update --init --recursive
 ./dtestdatabase
 ```
 
+Copy `.env.example` to `.env`.
+
+Visit `http://localhost` in your browser.
+
+You're good to go!
+
 ## Laradock/Docker
 
 This project uses [Laradock](https://laradock.io/) to host a local dev environment via docker.
@@ -37,26 +43,26 @@ Laravel IDE symbol maps are auto-generated on `composer update`.
 
 These bash commands exist as shorthands to the most common `docker-conpose` commands that I need to run on the docker container.
 
-| Command           | Description |
-|-------------------|-------------|
-| ./danalyze        | Run static analysis on the whole app. |
-| ./dannotate       | Update code symbols for use by pslam and Intelliphense. |
-| ./dbash           | Open a bash terminal within the docker container to execute bash commands. |
-| ./dcreatedatabase | Create a new database and run migrations. |
-| ./dcreatekey      | Generate a new application key. |
-| ./ddown           | Stop the docker container. |
-| ./dhorizon        | Start Horizon within the docker container to process queued jobs for all queues. |
-| ./dinstall        | Composer install within the docker container to fetch dependencies.
-| ./dinstallquiet   | Composer install withing the docker conttainer to fetch dependencies silently and non-interactively. |
-| ./dlint           | Style guide validate only the current diff. |
-| ./dlinteverything | Style guide validate the whole app. |
-| ./dlist           | List out the docker containers running in this network. |
-| ./dlogs           | Display the docker network logs. |
-| ./dmysql          | Open a mysql terminal within the docker container to execute SQL commamnds. |
-| ./dredis          | Open a redis terminal within the docker container to execute Redis commamnds. |
-| ./dtest           | Run phpunit tests on the whole app. |
-| ./dtinker         | Open an artisan tinker terminal within the docker container to execute PHP commands. |
-| ./dup             | Start the docker container (begin hosting at [http://localhost](http://localhost)). |
+| Command         | Description |
+|-----------------|-------------|
+| danalyze        | Run static analysis on the whole app. |
+| dannotate       | Update code symbols for use by pslam and Intelliphense. |
+| dbash           | Open a bash terminal within the docker container to execute bash commands. |
+| dcreatedatabase | Create a new database and run migrations. |
+| dcreatekey      | Generate a new application key. |
+| ddown           | Stop the docker container. |
+| dhorizon        | Start Horizon within the docker container to process queued jobs for all queues. |
+| dinstall        | Composer install within the docker container to fetch dependencies.
+| dinstallquiet   | Composer install withing the docker conttainer to fetch dependencies silently and non-interactively. |
+| dlint           | Style guide validate only the current diff. |
+| dlinteverything | Style guide validate the whole app. |
+| dlist           | List out the docker containers running in this network. |
+| dlogs           | Display the docker network logs. |
+| dmysql          | Open a mysql terminal within the docker container to execute SQL commamnds. |
+| dredis          | Open a redis terminal within the docker container to execute Redis commamnds. |
+| dtest           | Run phpunit tests on the whole app. |
+| dtinker         | Open an artisan tinker terminal within the docker container to execute PHP commands. |
+| dup             | Start the docker container (begin hosting at [http://localhost](http://localhost)). |
 
 ### Dashboards
 

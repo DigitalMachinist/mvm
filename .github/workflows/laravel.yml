@@ -1,0 +1,28 @@
+name: Laravel
+
+on: [push]
+
+jobs:
+  laravel-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Create .env from .env.ci
+      run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
+    - name: Start docker container
+      run: ./dup
+    - name: Composer install
+      run: ./dinstallquiet
+    - name: Generate app key
+      run: ./dcreatekey
+    - name: Create test database and migrate
+      run: ./dtestdatabase
+    - name: Run phpunit tests
+      env:
+        DB_CONNECTION: mysql
+        DB_DATABASE: mvm_testing
+      run: ./dtest
+    - name: Run psalm static analysis
+      run: ./danalyze
+    - name: Run tlint style guide
+      run: ./dlint

@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
 cd laradock &&
+echo 'Linting app'
 docker-compose exec --user=laradock workspace ./vendor/tightenco/tlint/bin/tlint lint app --diff --ansi
+echo 'Linting domain'
+docker-compose exec --user=laradock workspace ./vendor/tightenco/tlint/bin/tlint lint domain --diff --ansi
+echo 'Linting support'
+docker-compose exec --user=laradock workspace ./vendor/tightenco/tlint/bin/tlint lint support --diff --ansi
 cd ..

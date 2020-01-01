@@ -16,47 +16,6 @@
     </projectFiles>
 
     <issueHandlers>
-        <LessSpecificReturnStatement>
-            <errorLevel type="suppress">
-                <file name="app/Exceptions/Handler.php" />
-            </errorLevel>
-        </LessSpecificReturnStatement>
-        <MixedInferredReturnType>
-            <errorLevel type="suppress">
-                <file name="app/Http/Controllers/Auth/RegisterController.php" />
-            </errorLevel>
-        </MixedInferredReturnType>
-        <MixedMethodCall>
-            <errorLevel type="suppress">
-                <file name="app/Providers/RouteServiceProvider.php" />
-            </errorLevel>
-        </MixedMethodCall>
-        <MixedReturnStatement>
-            <errorLevel type="suppress">
-                <file name="app/Http/Controllers/Auth/RegisterController.php" />
-            </errorLevel>
-        </MixedReturnStatement>
-        <MoreSpecificReturnType>
-            <errorLevel type="suppress">
-                <file name="app/Exceptions/Handler.php" />
-            </errorLevel>
-        </MoreSpecificReturnType>
-        <PropertyNotSetInConstructor>
-            <errorLevel type="suppress">
-                <file name="app/Console/Kernel.php" />
-                <file name="app/Http/Middleware/TrustProxies.php" />
-                <file name="app/User.php" />
-            </errorLevel>
-        </PropertyNotSetInConstructor>
-        <UnresolvableInclude>
-            <errorLevel type="suppress">
-                <file name="app/Console/Kernel.php" />
-                <file name="app/Providers/BroadcastServiceProvider.php" />
-            </errorLevel>
-        </UnresolvableInclude>
-
-        <LessSpecificReturnType errorLevel="info"/>
-
         <!-- level 3 issues - slightly lazy code writing, but provably low false-negatives -->
 
         <DeprecatedMethod errorLevel="info"/>
@@ -77,7 +36,6 @@
         <InvalidDocblock errorLevel="info"/>
         <MisplacedRequiredParam errorLevel="info"/>
 
-        <PropertyNotSetInConstructor errorLevel="info"/>
         <MissingConstructor errorLevel="info"/>
         <MissingClosureParamType errorLevel="info"/>
         <MissingParamType errorLevel="info"/>
@@ -87,10 +45,63 @@
         <DocblockTypeContradiction errorLevel="info"/>
         <RedundantConditionGivenDocblockType errorLevel="info"/>
 
-        <UnresolvableInclude errorLevel="info"/>
-
         <RawObjectIteration errorLevel="info"/>
 
         <InvalidStringClass errorLevel="info"/>
+
+        <!-- Ignore a bunch of specific issues. -->
+
+        <LessSpecificReturnStatement>
+            <errorLevel type="suppress">
+                <file name="app/Exceptions/Handler.php" />
+            </errorLevel>
+        </LessSpecificReturnStatement>
+
+        <MixedInferredReturnType>
+            <errorLevel type="suppress">
+                <file name="app/Http/Controllers/Auth/RegisterController.php" />
+            </errorLevel>
+        </MixedInferredReturnType>
+
+        <MixedMethodCall>
+            <errorLevel type="suppress">
+                <file name="app/Providers/RouteServiceProvider.php" />
+            </errorLevel>
+        </MixedMethodCall>
+
+        <MixedReturnStatement>
+            <errorLevel type="suppress">
+                <file name="app/Http/Controllers/Auth/RegisterController.php" />
+            </errorLevel>
+        </MixedReturnStatement>
+
+        <MoreSpecificReturnType>
+            <errorLevel type="suppress">
+                <file name="app/Exceptions/Handler.php" />
+            </errorLevel>
+        </MoreSpecificReturnType>
+
+        <PossiblyInvalidMethodCall errorLevel="suppress" />
+        <PossiblyInvalidPropertyFetch errorLevel="suppress" />
+
+        <PropertyNotSetInConstructor errorLevel="suppress" />
+
+        <TooFewArguments errorLevel="info" />
+        <TooManyArguments errorLevel="suppress" />
+
+        <UnresolvableInclude errorLevel="info">
+            <errorLevel type="suppress">
+                <file name="app/Console/Kernel.php" />
+                <file name="app/Providers/BroadcastServiceProvider.php" />
+            </errorLevel>
+        </UnresolvableInclude>
+
+        <UndefinedInterfaceMethod>
+            <errorLevel type="suppress">
+                <file name="app/Providers/TelescopeServiceProvider.php" />
+            </errorLevel>
+        </UndefinedInterfaceMethod>
+
+        <LessSpecificReturnType errorLevel="info"/>
     </issueHandlers>
 <plugins><pluginClass class="Psalm\LaravelPlugin\Plugin"/></plugins></psalm>

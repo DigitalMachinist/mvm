@@ -137,6 +137,7 @@ PHP code symbol maps are auto-generated on `composer update`, `composer install`
 #### Dev only packages
 
 - [barryvdh/laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper)
+- [codedungeon/phpunit-result-printer](https://github.com/mikeerickson/phpunit-pretty-result-printer)
 - [psalm/laravel-psalm-plugin](https://github.com/psalm/laravel-psalm-plugin)
 - [tightenco/tlint](https://github.com/tightenco/tlint)
 - [vimeo/psalm](https://github.com/vimeo/psalm)

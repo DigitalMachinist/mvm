@@ -9,19 +9,24 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="false">
+         stopOnFailure="false"
+         printerClass="Codedungeon\PHPUnitPrettyResultPrinter\Printer">
     <testsuites>
-        <testsuite name="Unit">
-            <directory suffix="Test.php">./tests/Unit</directory>
+        <testsuite name="app">
+            <directory suffix="Test.php">./app/Tests</directory>
         </testsuite>
-
-        <testsuite name="Feature">
-            <directory suffix="Test.php">./tests/Feature</directory>
+        <testsuite name="domain">
+            <directory suffix="Test.php">./domain/*/Tests</directory>
+        </testsuite>
+        <testsuite name="support">
+            <directory suffix="Test.php">./support/Tests</directory>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app</directory>
+            <directory suffix=".php">./domain</directory>
+            <directory suffix=".php">./support</directory>
         </whitelist>
     </filter>
     <php>
@@ -31,8 +36,8 @@
         <server name="MAIL_DRIVER" value="array"/>
         <server name="QUEUE_CONNECTION" value="sync"/>
         <server name="SESSION_DRIVER" value="array"/>
-        <env name="DB_CONNECTION" value="sqlite"/>
-        <env name="DB_DATABASE" value=":memory:"/>
+        <env name="DB_DATABASE" value="mvm_testing"/>
+        <env name="APP_KEY" value="base64:rEO2ClwcP4PbpBaVExppQ8f12A7a63RR72aJf12uxjs=" />
         <env name="JWT_SECRET" value="zTP4jTKHWtWWDrgiOIs7gBBIWU03PITi"/>
     </php>
 </phpunit>

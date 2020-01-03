@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Domain\Users\User;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Horizon\HorizonApplicationServiceProvider;
 
@@ -32,7 +33,7 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
      */
     protected function gate()
     {
-        Gate::define('viewHorizon', function ($user) {
+        Gate::define('viewHorizon', function (User $user) {
             return in_array($user->email, [
                 'jrose0@gmail.com',
             ]);

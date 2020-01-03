@@ -3,9 +3,11 @@
 namespace Domain\Rooms;
 
 use Domain\KeyRooms\KeyRoom;
+use Domain\Keys\Key;
 use Domain\Projects\Project;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
@@ -56,6 +58,21 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyRooms\KeyRoom[] $keyRooms
  * @property-read int|null $keyRoomsCount
  * @property-read \Domain\Projects\Project $project
+ * @property int $projectId
+ * @property string|null $imageUrl
+ * @property \Illuminate\Support\Carbon|null $createdAt
+ * @property \Illuminate\Support\Carbon|null $updatedAt
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyRooms\KeyRoom[] $keyRooms
+ * @property-read int|null $keyRoomsCount
+ * @property-read \Domain\Keys\KeyCollection|\Domain\Keys\Key[] $keys
+ * @property-read int|null $keysCount
+ * @property int $projectId
+ * @property string|null $imageUrl
+ * @property \Illuminate\Support\Carbon|null $createdAt
+ * @property \Illuminate\Support\Carbon|null $updatedAt
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyRooms\KeyRoom[] $keyRooms
+ * @property-read int|null $keyRoomsCount
+ * @property-read int|null $keysCount
  */
 class Room extends Model
 {
@@ -94,6 +111,11 @@ class Room extends Model
     public function key_rooms(): HasMany
     {
         return $this->hasMany(KeyRoom::class);
+    }
+
+    public function keys(): BelongsToMany
+    {
+        return $this->belongsToMany(Key::class);
     }
 
     public function project(): BelongsTo

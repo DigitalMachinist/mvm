@@ -21,7 +21,12 @@ class KeyRoomTest extends TestCase
                 'key_id' => $key->id,
             ]);
 
-        $this->assertEquals($key->id, $keyRoom->key()->value('id'));
+        $this
+            ->assertEquals(
+                $key->id,
+                $keyRoom->key()->value('id'),
+                'Was the Key returned?'
+            );
     }
 
     function testRoomRelationship(): void
@@ -33,6 +38,11 @@ class KeyRoomTest extends TestCase
                 'room_id' => $room->id,
             ]);
 
-        $this->assertEquals($room->id, $keyRoom->room()->value('id'));
+        $this
+            ->assertEquals(
+                $room->id,
+                $keyRoom->room()->value('id'),
+                'Was the Room returned?'
+            );
     }
 }

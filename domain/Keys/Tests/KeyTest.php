@@ -42,7 +42,8 @@ class KeyTest extends TestCase
         $this
             ->assertEqualsCanonicalizing(
                 $keyPathways->pluck('pathway_id'),
-                $key->key_pathways()->get()->pluck('pathway_id')
+                $key->key_pathways()->get()->pluck('pathway_id'),
+                'Were all of the KeyPathways returned?'
             );
     }
 
@@ -73,7 +74,8 @@ class KeyTest extends TestCase
         $this
             ->assertEqualsCanonicalizing(
                 $keyRooms->pluck('room_id'),
-                $key->key_rooms()->get()->pluck('room_id')
+                $key->key_rooms()->get()->pluck('room_id'),
+                'Were all of the KeyRooms returned?'
             );
     }
 
@@ -104,7 +106,8 @@ class KeyTest extends TestCase
         $this
             ->assertEqualsCanonicalizing(
                 $pathways->pluck('id'),
-                $key->pathways()->get()->pluck('id')
+                $key->pathways()->get()->pluck('id'),
+                'Were all of the Pathways returned?'
             );
     }
 
@@ -117,7 +120,12 @@ class KeyTest extends TestCase
                 'project_id' => $project->id,
             ]);
 
-        $this->assertEquals($project->id, $key->project()->value('id'));
+        $this
+            ->assertEquals(
+                $project->id,
+                $key->project()->value('id'),
+                'Was the Project returned?'
+            );
     }
 
     function testRoomsRelationship(): void
@@ -147,7 +155,8 @@ class KeyTest extends TestCase
         $this
             ->assertEqualsCanonicalizing(
                 $rooms->pluck('id'),
-                $key->rooms()->get()->pluck('id')
+                $key->rooms()->get()->pluck('id'),
+                'Were all of the Rooms returned?'
             );
     }
 }

@@ -21,7 +21,12 @@ class KeyPathwayTest extends TestCase
                 'key_id' => $key->id,
             ]);
 
-        $this->assertEquals($key->id, $keyPathway->key()->value('id'));
+        $this
+            ->assertEquals(
+                $key->id,
+                $keyPathway->key()->value('id'),
+                'Was the Key returned?'
+            );
     }
 
     function testPathwayRelationship(): void
@@ -33,6 +38,11 @@ class KeyPathwayTest extends TestCase
                 'pathway_id' => $pathway->id,
             ]);
 
-        $this->assertEquals($pathway->id, $keyPathway->pathway()->value('id'));
+        $this
+            ->assertEquals(
+                $pathway->id,
+                $keyPathway->pathway()->value('id'),
+                'Was the Pathway returned?'
+            );
     }
 }

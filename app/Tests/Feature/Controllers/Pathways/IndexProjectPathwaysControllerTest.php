@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Tests\Feature\Controllers\Rooms;
+namespace App\Tests\Feature\Controllers\Pathways;
 
-use Arr;
+use Domain\Pathways\Pathway;
 use Domain\Projects\Project;
-use Domain\Rooms\Room;
 use Domain\Users\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Arr;
 use Support\Tests\TestCase;
 
-class InderProjectRoomsControllerTest extends TestCase
+class InderProjectPathwaysControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    function testInvokeReturnsTheRequestedProjectsRooms(): void
+    function testInvokeReturnsTheRequestedProjectsPathways(): void
     {
         $user = factory(User::class)->create();
 
@@ -23,13 +23,13 @@ class InderProjectRoomsControllerTest extends TestCase
                 'name'    => 'Dark Souls 3',
             ]);
 
-        $rooms = collect([
-            'Firelink Shrine',
-            'Undead Settlement',
-            'Great Archive',
+        $pathways = collect([
+            'Firelink Shrine --> EAST',
+            'Undead Settlement --> NORTH',
+            'Great Archive --> WEST',
         ])
         ->map(function ($name) use ($darkSouls) {
-            return factory(Room::class)
+            return factory(Pathway::class)
                 ->create([
                     'project_id' => $darkSouls->id,
                     'name'       => $name,
@@ -37,29 +37,29 @@ class InderProjectRoomsControllerTest extends TestCase
         });
 
         // Add a project that doesn't belong to Dark Souls 3.
-        factory(Room::class)
+        factory(Pathway::class)
             ->create([
                 'project_id' => factory(Project::class)->create()->id,
-                'name'       => 'The Nexus',
+                'name'       => 'The Nexus --> SOUTH',
             ]);
 
-        $response = $this->getJson("/api/projects/{$darkSouls->id}/rooms");
+        $response = $this->getJson("/api/projects/{$darkSouls->id}/pathways");
 
         $this
             ->assertEqualsCanonicalizing(
-                $rooms
+                $pathways
                     ->where('project_id', $darkSouls->id)
                     ->pluck('name')
                     ->toArray(),
                 Arr::pluck($response->decodeResponseJson()['data'], 'name'),
-                'Were only the requested Project\'s Rooms returned?'
+                'Were only the requested Project\'s Pathways returned?'
             );
     }
 
     function testInvokeErrors404WhenUserNotFound(): void
     {
         $this
-            ->getJson("/api/projects/1/rooms")
+            ->getJson("/api/projects/1/pathways")
             ->assertStatus(404);
     }
 }

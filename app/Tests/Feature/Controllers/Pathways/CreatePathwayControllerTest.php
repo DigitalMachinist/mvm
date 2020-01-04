@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Feature\Controllers\Rooms;
+namespace App\Tests\Feature\Controllers\Pathways;
 
 use Domain\Projects\Project;
 use Domain\Users\User;
@@ -8,11 +8,11 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Arr;
 use Support\Tests\TestCase;
 
-class CreateRoomControllerTest extends TestCase
+class CreatePathwayControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    function testInvokeCreatesANewRoom(): void
+    function testInvokeCreatesANewPathway(): void
     {
         $user = factory(User::class)->create();
 
@@ -24,14 +24,10 @@ class CreateRoomControllerTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->postJson("/api/projects/{$darkSouls->id}/rooms", [
-                'name'        => $name = 'Firelink Shrine',
-                'description' => 'Time to get LIT',
+            ->postJson("/api/projects/{$darkSouls->id}/pathways", [
+                'name'        => $name = 'Firelink Shrine --> EAST',
+                'description' => 'Time to get BIT',
                 'difficulty'  => 1,
-                'x'           => 0,
-                'y'           => 0,
-                'width'       => 1,
-                'height'      => 1,
                 'colour'      => '3344dd',
                 'image_url'   => null,
             ]);
@@ -42,11 +38,11 @@ class CreateRoomControllerTest extends TestCase
             ->assertEquals(
                 $name,
                 Arr::get($response->decodeResponseJson(), 'data.name'),
-                'Was the created Room returned?'
+                'Was the created Pathway returned?'
             );
 
         $this
-            ->assertDatabaseHas('rooms', [
+            ->assertDatabaseHas('pathways', [
                 'name' => $name,
             ]);
     }
@@ -59,7 +55,7 @@ class CreateRoomControllerTest extends TestCase
             ]);
 
         $this
-            ->postJson("/api/projects/{$darkSouls->id}/rooms", [
+            ->postJson("/api/projects/{$darkSouls->id}/pathways", [
                 'name' => 'YOU DIED',
             ])
             ->assertStatus(401);
@@ -76,14 +72,10 @@ class CreateRoomControllerTest extends TestCase
 
         $this
             ->actingAs($user)
-            ->postJson("/api/projects/{$darkSouls->id}/rooms", [
-                'name'        => 'Firelink Shrine',
-                'description' => 'Time to get LIT',
+            ->postJson("/api/projects/{$darkSouls->id}/pathways", [
+                'name'        => 'Firelink Shrine --> EAST',
+                'description' => 'Time to get BIT',
                 'difficulty'  => 1,
-                'x'           => 0,
-                'y'           => 0,
-                'width'       => 1,
-                'height'      => 1,
                 'colour'      => '3344dd',
                 'image_url'   => null,
             ])
@@ -96,14 +88,10 @@ class CreateRoomControllerTest extends TestCase
 
         $this
             ->actingAs($user)
-            ->postJson("/api/projects/1/rooms", [
-                'name'        => 'Firelink Shrine',
-                'description' => 'Time to get LIT',
+            ->postJson("/api/projects/1/pathways", [
+                'name'        => 'Firelink Shrine --> EAST',
+                'description' => 'Time to get BIT',
                 'difficulty'  => 1,
-                'x'           => 0,
-                'y'           => 0,
-                'width'       => 1,
-                'height'      => 1,
                 'colour'      => '3344dd',
                 'image_url'   => null,
             ])

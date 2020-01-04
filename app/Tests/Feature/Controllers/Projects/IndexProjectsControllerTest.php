@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Feature;
+namespace App\Tests\Feature\Controllers\Projects;
 
 use Arr;
 use Domain\Projects\Project;

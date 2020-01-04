@@ -1,31 +1,38 @@
 <?php
 
-namespace App\Tests\Feature\Controllers\Projects;
+namespace App\Tests\Feature\Controllers\Pathways;
 
+use Domain\Pathways\Pathway;
 use Domain\Projects\Project;
 use Domain\Users\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Arr;
 use Support\Tests\TestCase;
 
-class UpdateProjectControllerTest extends TestCase
+class UpdatePathwayControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    function testInvokeUpdatesAnExistingProject(): void
+    function testInvokeUpdatesAnExistingPathway(): void
     {
         $user = factory(User::class)->create();
 
-        $project = factory(Project::class)
+        $darkSouls = factory(Project::class)
             ->create([
                 'user_id' => $user->id,
-                'name'    => 'Metroid 2',
+                'name'    => 'Dark Souls 3',
+            ]);
+
+        $firelinkShrineEast = factory(Pathway::class)
+            ->create([
+                'project_id' => $darkSouls->id,
+                'name'       => 'Firelink Shrine --> EAST',
             ]);
 
         $response = $this
             ->actingAs($user)
-            ->patchJson("/api/projects/{$project->id}", [
-                'name' => $name = 'Super Metroid',
+            ->patchJson("/api/pathways/{$firelinkShrineEast->id}", [
+                'name' => $name = 'ForeLonk Shrone --> WEST',
             ]);
 
         $response->assertStatus(200);
@@ -34,12 +41,12 @@ class UpdateProjectControllerTest extends TestCase
             ->assertEquals(
                 $name,
                 Arr::get($response->decodeResponseJson(), 'data.name'),
-                'Was the Project returned?'
+                'Was the Pathway returned?'
             );
 
         $this
-            ->assertDatabaseHas('projects', [
-                'id'   => $project->id,
+            ->assertDatabaseHas('pathways', [
+                'id'   => $firelinkShrineEast->id,
                 'name' => $name,
             ]);
     }
@@ -48,14 +55,20 @@ class UpdateProjectControllerTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $project = factory(Project::class)
+        $darkSouls = factory(Project::class)
             ->create([
                 'user_id' => $user->id,
-                'name'    => 'Metroid 2',
+                'name'    => 'Dark Souls 3',
+            ]);
+
+        $firelinkShrineEast = factory(Pathway::class)
+            ->create([
+                'project_id' => $darkSouls->id,
+                'name'       => 'Firelink Shrine --> EAST',
             ]);
 
         $this
-            ->patchJson("/api/projects/{$project->id}", [
+            ->patchJson("/api/pathways/{$firelinkShrineEast->id}", [
                 'name' => 'YOU DIED',
             ])
             ->assertStatus(401);
@@ -65,27 +78,26 @@ class UpdateProjectControllerTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $project = factory(Project::class)
+        $firelinkShrineEast = factory(Pathway::class)
             ->create([
-                'user_id' => factory(User::class)->create()->id,
-                'name'    => 'Metroid 2',
+                'name'       => 'Firelink Shrine --> EAST',
             ]);
 
         $this
             ->actingAs($user)
-            ->patchJson("/api/projects/{$project->id}", [
+            ->patchJson("/api/pathways/{$firelinkShrineEast->id}", [
                 'name' => 'YOU DIED',
             ])
             ->assertStatus(403);
     }
 
-    function testInvokeErrors404WhenProjectNotFound(): void
+    function testInvokeErrors404WhenPathwayNotFound(): void
     {
         $user = factory(User::class)->create();
 
         $this
             ->actingAs($user)
-            ->patchJson("/api/projects/1", [
+            ->patchJson("/api/pathways/1", [
                 'name' => 'YOU DIED',
             ])
             ->assertStatus(404);

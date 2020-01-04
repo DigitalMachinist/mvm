@@ -40,7 +40,40 @@ class RoomTest extends TestCase
         $this
             ->assertEqualsCanonicalizing(
                 $keyRooms->pluck('key_id'),
-                $room->key_rooms()->get()->pluck('key_id')
+                $room->key_rooms()->get()->pluck('key_id'),
+                'Were all of the KeyRooms returned?'
+            );
+    }
+
+    function testKeysRelationship(): void
+    {
+        $project = factory(Project::class)->create();
+
+        $keys = factory(Key::class, 2)
+            ->create([
+                'project_id' => $project->id,
+            ]);
+
+        $room = factory(Room::class)
+            ->create([
+                'project_id' => $project->id,
+            ]);
+
+        $keyRooms = collect();
+        foreach ($keys as $key)
+        {
+            $keyRooms[] = factory(KeyRoom::class)
+                ->create([
+                    'key_id'  => $key->id,
+                    'room_id' => $room->id,
+                ]);
+        }
+
+        $this
+            ->assertEqualsCanonicalizing(
+                $keyRooms->pluck('key_id'),
+                $room->keys()->get()->pluck('id'),
+                'Were all of the Keys returned?'
             );
     }
 
@@ -53,6 +86,11 @@ class RoomTest extends TestCase
                 'project_id' => $project->id,
             ]);
 
-        $this->assertEquals($project->id, $room->project()->value('id'));
+        $this
+            ->assertEquals(
+                $project->id,
+                $room->project()->value('id'),
+                'Was the Project returned?'
+            );
     }
 }

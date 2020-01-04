@@ -26,7 +26,8 @@ class ProjectTest extends TestCase
         $this
             ->assertEqualsCanonicalizing(
                 $keys->pluck('id'),
-                $project->keys()->get()->pluck('id')
+                $project->keys()->get()->pluck('id'),
+                'Were all of the Keys returned?'
             );
     }
 
@@ -42,7 +43,8 @@ class ProjectTest extends TestCase
         $this
             ->assertEqualsCanonicalizing(
                 $pathways->pluck('id'),
-                $project->pathways()->get()->pluck('id')
+                $project->pathways()->get()->pluck('id'),
+                'Were all of the Pathways returned?'
             );
     }
 
@@ -58,7 +60,8 @@ class ProjectTest extends TestCase
         $this
             ->assertEqualsCanonicalizing(
                 $rooms->pluck('id'),
-                $project->rooms()->get()->pluck('id')
+                $project->rooms()->get()->pluck('id'),
+                'Were all of the Rooms returned?'
             );
     }
 
@@ -66,22 +69,20 @@ class ProjectTest extends TestCase
     {
         $user = factory(User::class)->create();
 
+        $startRoom = factory(Room::class)->create();
+
         $project = factory(Project::class)
             ->create([
-                'user_id' => $user->id,
-            ]);
-
-        $startRoom = factory(Room::class)
-            ->create([
-                'project_id' => $project->id,
-            ]);
-
-        $project
-            ->update([
+                'user_id'       => $user->id,
                 'start_room_id' => $startRoom->id,
             ]);
 
-        $this->assertEquals($startRoom->id, $project->start_room()->value('id'));
+        $this
+            ->assertEquals(
+                $startRoom->id,
+                $project->start_room()->value('id'),
+                'Was the Start Room returned?'
+            );
     }
 
     function testUserRelationship(): void
@@ -93,6 +94,11 @@ class ProjectTest extends TestCase
                 'user_id' => $user->id,
             ]);
 
-        $this->assertEquals($user->id, $project->user()->value('id'));
+        $this
+            ->assertEquals(
+                $user->id,
+                $project->user()->value('id'),
+                'Was the User returned?'
+            );
     }
 }

@@ -81,6 +81,7 @@
             </errorLevel>
         </MoreSpecificReturnType>
 
+        <PossiblyInvalidArgument errorLevel="suppress" />
         <PossiblyInvalidMethodCall errorLevel="suppress" />
         <PossiblyInvalidPropertyFetch errorLevel="suppress" />
 

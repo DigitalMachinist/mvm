@@ -3,10 +3,12 @@
 namespace Domain\Pathways;
 
 use Domain\KeyPathways\KeyPathway;
+use Domain\Keys\Key;
 use Domain\Projects\Project;
 use Domain\Rooms\Room;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
@@ -61,6 +63,29 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read \Domain\Projects\Project $project
  * @property-read \Domain\Rooms\Room $room1
  * @property-read \Domain\Rooms\Room $room2
+ * @property int $projectId
+ * @property int|null $room1Id
+ * @property int|null $room2Id
+ * @property string|null $imageUrl
+ * @property \Illuminate\Support\Carbon|null $createdAt
+ * @property \Illuminate\Support\Carbon|null $updatedAt
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyPathways\KeyPathway[] $keyPathways
+ * @property-read int|null $keyPathwaysCount
+ * @property-read \Domain\Keys\KeyCollection|\Domain\Keys\Key[] $keys
+ * @property-read int|null $keysCount
+ * @property-read \Domain\Rooms\Room|null $room1
+ * @property-read \Domain\Rooms\Room|null $room2
+ * @property int $projectId
+ * @property int|null $room1Id
+ * @property int|null $room2Id
+ * @property string|null $imageUrl
+ * @property \Illuminate\Support\Carbon|null $createdAt
+ * @property \Illuminate\Support\Carbon|null $updatedAt
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyPathways\KeyPathway[] $keyPathways
+ * @property-read int|null $keyPathwaysCount
+ * @property-read int|null $keysCount
+ * @property-read \Domain\Rooms\Room|null $room1
+ * @property-read \Domain\Rooms\Room|null $room2
  */
 class Pathway extends Model
 {
@@ -97,6 +122,11 @@ class Pathway extends Model
     public function key_pathways(): HasMany
     {
         return $this->hasMany(KeyPathway::class);
+    }
+
+    public function keys(): BelongsToMany
+    {
+        return $this->belongsToMany(Key::class);
     }
 
     public function project(): BelongsTo

@@ -39,7 +39,6 @@ class InderUserProjectsControllerTest extends TestCase
 
         $response = $this->getJson("/api/users/{$user->id}/projects");
 
-        // Are the returned projects owned by $user?
         $this
             ->assertEqualsCanonicalizing(
                 $projects
@@ -47,17 +46,14 @@ class InderUserProjectsControllerTest extends TestCase
                     ->pluck('name')
                     ->toArray(),
                 Arr::pluck($response->decodeResponseJson()['data'], 'name'),
-                'Were only the requested user\'s projects returned?'
+                'Were only the requested User\'s Projects returned?'
             );
     }
 
     function testInvokeErrors404WhenUserNotFound(): void
     {
-        // Get the next index after the latest user record.
-        $id = (DB::table('users')->max('id') + 1) ?? 1;
-
         $this
-            ->getJson("/api/users/{$id}/projects")
+            ->getJson("/api/users/1/projects")
             ->assertStatus(404);
     }
 }

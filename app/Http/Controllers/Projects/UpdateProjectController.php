@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Projects;
 
-use App\Http\Requests\CreateProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Resources\ProjectResource;
 use Domain\Projects\Project;
 use Illuminate\Http\JsonResponse;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class UpdateProjectController
 {
-    public function __invoke(CreateProjectRequest $request, int $project_id): JsonResponse
+    public function __invoke(UpdateProjectRequest $request, int $project_id): JsonResponse
     {
         $project = null;
         DB::transaction(

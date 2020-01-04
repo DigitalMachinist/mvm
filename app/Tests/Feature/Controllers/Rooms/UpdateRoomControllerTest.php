@@ -3,29 +3,36 @@
 namespace App\Tests\Feature;
 
 use Domain\Projects\Project;
+use Domain\Rooms\Room;
 use Domain\Users\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Arr;
 use Support\Tests\TestCase;
 
-class UpdateProjectControllerTest extends TestCase
+class UpdateRoomControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    function testInvokeUpdatesAnExistingProject(): void
+    function testInvokeUpdatesAnExistingRoom(): void
     {
         $user = factory(User::class)->create();
 
-        $project = factory(Project::class)
+        $darkSouls = factory(Project::class)
             ->create([
                 'user_id' => $user->id,
-                'name'    => 'Metroid 2',
+                'name'    => 'Dark Souls 3',
+            ]);
+
+        $firelinkShrine = factory(Room::class)
+            ->create([
+                'project_id' => $darkSouls->id,
+                'name'       => 'Firelink Shrine',
             ]);
 
         $response = $this
             ->actingAs($user)
-            ->patchJson("/api/projects/{$project->id}", [
-                'name' => $name = 'Super Metroid',
+            ->patchJson("/api/rooms/{$firelinkShrine->id}", [
+                'name' => $name = 'ForeLonk Shrone',
             ]);
 
         $response->assertStatus(200);
@@ -34,12 +41,12 @@ class UpdateProjectControllerTest extends TestCase
             ->assertEquals(
                 $name,
                 Arr::get($response->decodeResponseJson(), 'data.name'),
-                'Was the Project returned?'
+                'Was the Room returned?'
             );
 
         $this
-            ->assertDatabaseHas('projects', [
-                'id'   => $project->id,
+            ->assertDatabaseHas('rooms', [
+                'id'   => $firelinkShrine->id,
                 'name' => $name,
             ]);
     }
@@ -48,14 +55,20 @@ class UpdateProjectControllerTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $project = factory(Project::class)
+        $darkSouls = factory(Project::class)
             ->create([
                 'user_id' => $user->id,
-                'name'    => 'Metroid 2',
+                'name'    => 'Dark Souls 3',
+            ]);
+
+        $firelinkShrine = factory(Room::class)
+            ->create([
+                'project_id' => $darkSouls->id,
+                'name'       => 'Firelink Shrine',
             ]);
 
         $this
-            ->patchJson("/api/projects/{$project->id}", [
+            ->patchJson("/api/rooms/{$firelinkShrine->id}", [
                 'name' => 'YOU DIED',
             ])
             ->assertStatus(401);
@@ -65,27 +78,26 @@ class UpdateProjectControllerTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $project = factory(Project::class)
+        $firelinkShrine = factory(Room::class)
             ->create([
-                'user_id' => factory(User::class)->create()->id,
-                'name'    => 'Metroid 2',
+                'name'       => 'Firelink Shrine',
             ]);
 
         $this
             ->actingAs($user)
-            ->patchJson("/api/projects/{$project->id}", [
+            ->patchJson("/api/rooms/{$firelinkShrine->id}", [
                 'name' => 'YOU DIED',
             ])
             ->assertStatus(403);
     }
 
-    function testInvokeErrors404WhenProjectNotFound(): void
+    function testInvokeErrors404WhenRoomNotFound(): void
     {
         $user = factory(User::class)->create();
 
         $this
             ->actingAs($user)
-            ->patchJson("/api/projects/1", [
+            ->patchJson("/api/rooms/1", [
                 'name' => 'YOU DIED',
             ])
             ->assertStatus(404);

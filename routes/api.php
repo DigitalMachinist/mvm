@@ -6,19 +6,27 @@ use App\Http\Controllers\Projects\GetProjectController;
 use App\Http\Controllers\Projects\IndexProjectsController;
 use App\Http\Controllers\Projects\IndexUserProjectsController;
 use App\Http\Controllers\Projects\UpdateProjectController;
+use App\Http\Controllers\Rooms\CreateRoomController;
+use App\Http\Controllers\Rooms\DeleteRoomController;
+use App\Http\Controllers\Rooms\GetRoomController;
+use App\Http\Controllers\Rooms\IndexProjectRoomsController;
+use App\Http\Controllers\Rooms\UpdateRoomController;
+use App\Http\Middleware\Authenticate;
 use Illuminate\Http\Request;
 
 // Projects
 Route::get('projects', IndexProjectsController::class);
 Route::get('projects/{id}', GetProjectController::class);
-
-// User Projects
 Route::get('users/{id}/projects', IndexUserProjectsController::class);
+
+// Rooms
+Route::get('projects/{id}/rooms', IndexProjectRoomsController::class);
+Route::get('rooms/{id}', GetRoomController::class);
 
 // Require Authentication
 Route::group([
     'middleware' => [
-        \App\Http\Middleware\Authenticate::class,
+        Authenticate::class,
     ],
 ], function () {
     // Self User
@@ -30,4 +38,9 @@ Route::group([
     Route::post('projects', CreateProjectController::class);
     Route::patch('projects/{id}', UpdateProjectController::class);
     Route::delete('projects/{id}', DeleteProjectController::class);
+
+    // Rooms CRUD
+    Route::post('projects/{id}/rooms', CreateRoomController::class);
+    Route::patch('rooms/{id}', UpdateRoomController::class);
+    Route::delete('rooms/{id}', DeleteRoomController::class);
 });

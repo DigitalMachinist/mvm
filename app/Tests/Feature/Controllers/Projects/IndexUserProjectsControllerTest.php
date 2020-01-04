@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Tests\Feature;
+namespace App\Tests\Feature\Controllers\Projects;
 
 use Arr;
 use Domain\Projects\Project;
 use Domain\Users\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\DB;
 use Support\Tests\TestCase;
 
 class InderUserProjectsControllerTest extends TestCase

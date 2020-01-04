@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Tests\Feature\Controllers\Rooms;
+namespace App\Tests\Feature\Controllers\Pathways;
 
+use Domain\Pathways\Pathway;
 use Domain\Projects\Project;
-use Domain\Rooms\Room;
 use Domain\Users\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Arr;
 use Support\Tests\TestCase;
 
-class UpdateRoomControllerTest extends TestCase
+class DeletePathwayControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    function testInvokeUpdatesAnExistingRoom(): void
+    function testInvokeDeletesAnExistingPathway(): void
     {
         $user = factory(User::class)->create();
 
@@ -23,31 +22,21 @@ class UpdateRoomControllerTest extends TestCase
                 'name'    => 'Dark Souls 3',
             ]);
 
-        $firelinkShrine = factory(Room::class)
+        $firelinkShrineEast = factory(Pathway::class)
             ->create([
                 'project_id' => $darkSouls->id,
-                'name'       => 'Firelink Shrine',
+                'name'       => 'Firelink Shrine --> EAST',
             ]);
 
         $response = $this
             ->actingAs($user)
-            ->patchJson("/api/rooms/{$firelinkShrine->id}", [
-                'name' => $name = 'ForeLonk Shrone',
-            ]);
+            ->deleteJson("/api/pathways/{$firelinkShrineEast->id}");
 
         $response->assertStatus(200);
 
         $this
-            ->assertEquals(
-                $name,
-                Arr::get($response->decodeResponseJson(), 'data.name'),
-                'Was the Room returned?'
-            );
-
-        $this
-            ->assertDatabaseHas('rooms', [
-                'id'   => $firelinkShrine->id,
-                'name' => $name,
+            ->assertDatabaseMissing('pathways', [
+                'id' => $firelinkShrineEast->id,
             ]);
     }
 
@@ -61,16 +50,14 @@ class UpdateRoomControllerTest extends TestCase
                 'name'    => 'Dark Souls 3',
             ]);
 
-        $firelinkShrine = factory(Room::class)
+        $firelinkShrineEast = factory(Pathway::class)
             ->create([
                 'project_id' => $darkSouls->id,
-                'name'       => 'Firelink Shrine',
+                'name'       => 'Firelink Shrine --> EAST',
             ]);
 
         $this
-            ->patchJson("/api/rooms/{$firelinkShrine->id}", [
-                'name' => 'YOU DIED',
-            ])
+            ->deleteJson("/api/pathways/{$firelinkShrineEast->id}")
             ->assertStatus(401);
     }
 
@@ -78,28 +65,24 @@ class UpdateRoomControllerTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $firelinkShrine = factory(Room::class)
+        $firelinkShrineEast = factory(Pathway::class)
             ->create([
-                'name'       => 'Firelink Shrine',
+                'name' => 'Firelink Shrine --> EAST',
             ]);
 
         $this
             ->actingAs($user)
-            ->patchJson("/api/rooms/{$firelinkShrine->id}", [
-                'name' => 'YOU DIED',
-            ])
+            ->deleteJson("/api/pathways/{$firelinkShrineEast->id}")
             ->assertStatus(403);
     }
 
-    function testInvokeErrors404WhenRoomNotFound(): void
+    function testInvokeErrors404WhenPathwayNotFound(): void
     {
         $user = factory(User::class)->create();
 
         $this
             ->actingAs($user)
-            ->patchJson("/api/rooms/1", [
-                'name' => 'YOU DIED',
-            ])
+            ->deleteJson("/api/pathways/1")
             ->assertStatus(404);
     }
 }

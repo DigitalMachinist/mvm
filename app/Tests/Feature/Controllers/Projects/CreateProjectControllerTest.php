@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Feature;
+namespace App\Tests\Feature\Controllers\Projects;
 
 use Domain\Users\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -33,6 +33,11 @@ class CreateProjectControllerTest extends TestCase
                 Arr::get($response->decodeResponseJson(), 'data.name'),
                 'Was the created Project returned?'
             );
+
+        $this
+            ->assertDatabaseHas('projects', [
+                'name' => $name,
+            ]);
     }
 
     function testInvokeErrors401WhenNotLoggedIn(): void

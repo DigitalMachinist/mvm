@@ -3,6 +3,9 @@
 return [
 
     'pagination' => [
+        'pathways' => [
+            'index' => 20,
+        ],
         'projects' => [
             'index' => 20,
         ],

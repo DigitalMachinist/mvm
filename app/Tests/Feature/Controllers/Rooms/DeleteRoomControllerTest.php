@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Feature;
+namespace App\Tests\Feature\Controllers\Rooms;
 
 use Domain\Projects\Project;
 use Domain\Rooms\Room;

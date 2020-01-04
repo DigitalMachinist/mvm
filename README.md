@@ -72,6 +72,7 @@ These bash commands exist as shorthands to the most common `docker-compose` comm
 | dnuxtlint       | No           | Style guide validate nuxt frontend files. |
 | dnuxtstart      | Yes          | Start the nuxt frontend app (begin hosting the frontend at [http://localhost:3000](http://localhost:3000)). |
 | dredis          | Yes          | Open a redis terminal within the docker container to execute Redis commamnds. |
+| dtail           | Yes          | Open a tail of laravel.log that updates reactively. |
 | dtest           | No           | Run phpunit tests on the whole app. |
 | dtinker         | Yes          | Open an artisan tinker terminal within the docker container to execute PHP commands. |
 | dup             | No           | Start the docker container (begin hosting the backend at [http://localhost](http://localhost)). |

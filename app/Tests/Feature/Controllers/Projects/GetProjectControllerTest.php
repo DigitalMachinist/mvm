@@ -18,14 +18,15 @@ class GetProjectControllerTest extends TestCase
                 'name' => 'Castlevania: Symphony of the Night',
             ]);
 
-        $mario = factory(Project::class)
-            ->create([
-                'name' => 'Super Mario World',
-            ]);
-
         $metroid = factory(Project::class)
             ->create([
                 'name' => 'Super Metroid',
+            ]);
+
+        // Add another we don't return to mix it up.
+        factory(Project::class)
+            ->create([
+                'name' => 'Super Mario World',
             ]);
 
         $response = $this->getJson("/api/projects/{$castlevania->id}");
@@ -34,7 +35,7 @@ class GetProjectControllerTest extends TestCase
             ->assertEquals(
                 $castlevania->name,
                 Arr::get($response->decodeResponseJson(), 'data.name'),
-                'Was the requested (castlevania) project returned?'
+                'Was the requested (castlevania) Project returned?'
             );
 
         $response = $this->getJson("/api/projects/{$metroid->id}");
@@ -43,7 +44,7 @@ class GetProjectControllerTest extends TestCase
             ->assertEquals(
                 $metroid->name,
                 Arr::get($response->decodeResponseJson(), 'data.name'),
-                'Was the requested (metroid) project returned?'
+                'Was the requested (metroid) Project returned?'
             );
     }
 

@@ -21,7 +21,7 @@ class RoomResource extends JsonResource
             'image_url'   => $this->image_url,
             'created_at'  => $this->created_at->toIso8601String(),
             'updated_at'  => $this->updated_at->toIso8601String(),
-            'project'     => ProjectResource::collection($this->whenLoaded('project')),
+            'project'     => new ProjectResource($this->whenLoaded('project')),
             'keys'        => KeyResource::collection($this->whenLoaded('keys')),
             'pathways'    => PathwayResource::collection($this->whenLoaded('pathways')),
         ];

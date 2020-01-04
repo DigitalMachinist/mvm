@@ -11,7 +11,7 @@ class DeleteProjectControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    function testInvokeEditsAnExistingProject(): void
+    function testInvokeDeletesAnExistingProject(): void
     {
         $user = factory(User::class)->create();
 

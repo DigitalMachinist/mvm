@@ -10,6 +10,8 @@ class PathwayResource extends JsonResource
     {
         return [
             'id'          => $this->id,
+            'room_1_id'   => $this->room_1_id,
+            'room_2_id'   => $this->room_2_id,
             'name'        => $this->name,
             'description' => $this->description,
             'difficulty'  => $this->difficulty,

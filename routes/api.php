@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\KeyRooms\CreateKeyRoomController;
+use App\Http\Controllers\KeyRooms\DeleteKeyRoomController;
+use App\Http\Controllers\KeyRooms\GetKeyRoomController;
+use App\Http\Controllers\KeyRooms\UpdateKeyRoomController;
 use App\Http\Controllers\Keys\CreateKeyController;
 use App\Http\Controllers\Keys\DeleteKeyController;
 use App\Http\Controllers\Keys\GetKeyController;
@@ -26,6 +30,9 @@ use Illuminate\Http\Request;
 
 // Users
 // TODO
+
+// KeyRooms
+Route::get('keys/{id}/rooms/{id2}', GetKeyRoomController::class);
 
 // Keys
 Route::get('projects/{id}/keys', IndexProjectKeysController::class);
@@ -54,6 +61,11 @@ Route::group([
     Route::get('user', function (Request $request) {
         return $request->user();
     });
+
+    // KeyRooms CRUD
+    Route::post('keys/{id}/rooms', CreateKeyRoomController::class);
+    Route::patch('keys/{id}/rooms/{id2}', UpdateKeyRoomController::class);
+    Route::delete('keys/{id}/rooms/{id2}', DeleteKeyRoomController::class);
 
     // Keys CRUD
     Route::post('projects/{id}/keys', CreateKeyController::class);

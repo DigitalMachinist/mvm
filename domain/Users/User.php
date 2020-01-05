@@ -121,6 +121,12 @@ use Illuminate\Notifications\Notifiable;
  * @property \Illuminate\Support\Carbon|null $updatedAt
  * @property-read int|null $notificationsCount
  * @property-read int|null $projectsCount
+ * @property \Illuminate\Support\Carbon|null $emailVerifiedAt
+ * @property string|null $rememberToken
+ * @property \Illuminate\Support\Carbon|null $createdAt
+ * @property \Illuminate\Support\Carbon|null $updatedAt
+ * @property-read int|null $notificationsCount
+ * @property-read int|null $projectsCount
  */
 class User extends Authenticatable implements MustVerifyEmail
 {

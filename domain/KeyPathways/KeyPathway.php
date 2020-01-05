@@ -46,6 +46,10 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  * @property int $pathwayId
  * @property \Illuminate\Support\Carbon|null $createdAt
  * @property \Illuminate\Support\Carbon|null $updatedAt
+ * @property int $keyId
+ * @property int $pathwayId
+ * @property \Illuminate\Support\Carbon|null $createdAt
+ * @property \Illuminate\Support\Carbon|null $updatedAt
  */
 class KeyPathway extends Pivot
 {

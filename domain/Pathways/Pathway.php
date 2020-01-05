@@ -86,6 +86,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read int|null $keysCount
  * @property-read \Domain\Rooms\Room|null $room1
  * @property-read \Domain\Rooms\Room|null $room2
+ * @property int $projectId
+ * @property int|null $room1Id
+ * @property int|null $room2Id
+ * @property string|null $imageUrl
+ * @property \Illuminate\Support\Carbon|null $createdAt
+ * @property \Illuminate\Support\Carbon|null $updatedAt
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyPathways\KeyPathway[] $keyPathways
+ * @property-read int|null $keyPathwaysCount
+ * @property-read int|null $keysCount
+ * @property-read \Domain\Rooms\Room|null $room1
+ * @property-read \Domain\Rooms\Room|null $room2
  */
 class Pathway extends Model
 {

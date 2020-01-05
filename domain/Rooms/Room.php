@@ -73,6 +73,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyRooms\KeyRoom[] $keyRooms
  * @property-read int|null $keyRoomsCount
  * @property-read int|null $keysCount
+ * @property int $projectId
+ * @property string|null $imageUrl
+ * @property \Illuminate\Support\Carbon|null $createdAt
+ * @property \Illuminate\Support\Carbon|null $updatedAt
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyRooms\KeyRoom[] $keyRooms
+ * @property-read int|null $keyRoomsCount
+ * @property-read int|null $keysCount
  */
 class Room extends Model
 {

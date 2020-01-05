@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Tests\Feature\Controllers\KeyRooms;
+namespace App\Tests\Feature\Controllers\KeyPathways;
 
 use Domain\Keys\Key;
+use Domain\Pathways\Pathway;
 use Domain\Projects\Project;
-use Domain\Rooms\Room;
 use Domain\Users\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Arr;
 use Support\Tests\TestCase;
 
-class CreateKeyRoomControllerTest extends TestCase
+class CreateKeyPathwayControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    function testInvokeCreatesANewKeyRoom(): void
+    function testInvokeCreatesANewKeyPathway(): void
     {
         $user = factory(User::class)->create();
 
@@ -30,7 +30,7 @@ class CreateKeyRoomControllerTest extends TestCase
                 'name'       => 'Master Key',
             ]);
 
-        $firelinkShrine = factory(Room::class)
+        $firelinkShrine = factory(Pathway::class)
             ->create([
                 'project_id' => $darkSouls->id,
                 'name'       => 'Firelink Shrine',
@@ -38,9 +38,9 @@ class CreateKeyRoomControllerTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->postJson("/api/keys/{$masterKey->id}/rooms", [
-                'key_id'  => $masterKey->id,
-                'room_id' => $firelinkShrine->id,
+            ->postJson("/api/keys/{$masterKey->id}/pathways", [
+                'key_id'     => $masterKey->id,
+                'pathway_id' => $firelinkShrine->id,
             ]);
 
         $response->assertStatus(201);
@@ -49,19 +49,19 @@ class CreateKeyRoomControllerTest extends TestCase
             ->assertEqualsCanonicalizing(
                 [
                     'key_id'  => $masterKey->id,
-                    'room_id' => $firelinkShrine->id,
+                    'pathway_id' => $firelinkShrine->id,
                 ],
                 Arr::only($response->decodeResponseJson()['data'], [
                     'key_id',
-                    'room_id',
+                    'pathway_id',
                 ]),
-                'Was the created KeyRoom returned?'
+                'Was the created KeyPathway returned?'
             );
 
         $this
-            ->assertDatabaseHas('key_room', [
-                'key_id'  => $masterKey->id,
-                'room_id' => $firelinkShrine->id,
+            ->assertDatabaseHas('key_pathway', [
+                'key_id'     => $masterKey->id,
+                'pathway_id' => $firelinkShrine->id,
             ]);
     }
 
@@ -85,9 +85,9 @@ class CreateKeyRoomControllerTest extends TestCase
             ]);
 
         $this
-            ->postJson("/api/keys/{$masterKey->id}/rooms", [
-                'key_id'  => $masterKey->id,
-                'room_id' => $firelinkShrine->id,
+            ->postJson("/api/keys/{$masterKey->id}/pathways", [
+                'key_id'     => $masterKey->id,
+                'pathway_id' => $firelinkShrine->id,
             ])
             ->assertStatus(401);
     }
@@ -115,9 +115,9 @@ class CreateKeyRoomControllerTest extends TestCase
 
         $this
             ->actingAs($user)
-            ->postJson("/api/keys/{$masterKey->id}/rooms", [
-                'key_id'  => $masterKey->id,
-                'room_id' => $firelinkShrine->id,
+            ->postJson("/api/keys/{$masterKey->id}/pathways", [
+                'key_id'     => $masterKey->id,
+                'pathway_id' => $firelinkShrine->id,
             ])
             ->assertStatus(403);
     }
@@ -128,9 +128,9 @@ class CreateKeyRoomControllerTest extends TestCase
 
         $this
             ->actingAs($user)
-            ->postJson("/api/keys/1/rooms", [
-                'key_id'  => 1,
-                'room_id' => 1,
+            ->postJson("/api/keys/1/pathways", [
+                'key_id'     => 1,
+                'pathway_id' => 1,
             ])
             ->assertStatus(404);
     }
@@ -157,7 +157,7 @@ class CreateKeyRoomControllerTest extends TestCase
                 'name'    => 'Dark Souls 3',
             ]);
 
-        $firelinkShrine = factory(Room::class)
+        $firelinkShrine = factory(Pathway::class)
             ->create([
                 'project_id' => $darkSouls->id,
                 'name'       => 'Firelink Shrine',
@@ -165,14 +165,14 @@ class CreateKeyRoomControllerTest extends TestCase
 
         $this
             ->actingAs($user)
-            ->postJson("/api/keys/{$masterKey->id}/rooms", [
-                'key_id'  => $masterKey->id,
-                'room_id' => $firelinkShrine->id,
+            ->postJson("/api/keys/{$masterKey->id}/pathways", [
+                'key_id'     => $masterKey->id,
+                'pathway_id' => $firelinkShrine->id,
             ])
             ->assertStatus(409);
     }
 
-    function testInvokeErrors409WhenRoomDoesntBelongToProject(): void
+    function testInvokeErrors409WhenPathwayDoesntBelongToProject(): void
     {
         $user = factory(User::class)->create();
 
@@ -188,7 +188,7 @@ class CreateKeyRoomControllerTest extends TestCase
                 'name'       => 'Master Key',
             ]);
 
-        $firelinkShrine = factory(Room::class)
+        $firelinkShrine = factory(Pathway::class)
             ->create([
                 'project_id' => factory(Project::class)->create()->id,
                 'name'       => 'Firelink Shrine',
@@ -196,9 +196,9 @@ class CreateKeyRoomControllerTest extends TestCase
 
         $this
             ->actingAs($user)
-            ->postJson("/api/keys/{$masterKey->id}/rooms", [
+            ->postJson("/api/keys/{$masterKey->id}/pathways", [
                 'key_id'  => $masterKey->id,
-                'room_id' => $firelinkShrine->id,
+                'pathway_id' => $firelinkShrine->id,
             ])
             ->assertStatus(409);
     }

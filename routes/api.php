@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\KeyPathways\CreateKeyPathwayController;
+use App\Http\Controllers\KeyPathways\DeleteKeyPathwayController;
+use App\Http\Controllers\KeyPathways\GetKeyPathwayController;
+use App\Http\Controllers\KeyPathways\UpdateKeyPathwayController;
 use App\Http\Controllers\KeyRooms\CreateKeyRoomController;
 use App\Http\Controllers\KeyRooms\DeleteKeyRoomController;
 use App\Http\Controllers\KeyRooms\GetKeyRoomController;
@@ -31,12 +35,11 @@ use Illuminate\Http\Request;
 // Users
 // TODO
 
-// KeyRooms
-Route::get('keys/{id}/rooms/{id2}', GetKeyRoomController::class);
-
 // Keys
 Route::get('projects/{id}/keys', IndexProjectKeysController::class);
 Route::get('keys/{id}', GetKeyController::class);
+Route::get('keys/{id}/pathways/{id2}', GetKeyPathwayController::class);
+Route::get('keys/{id}/rooms/{id2}', GetKeyRoomController::class);
 
 // Pathways
 Route::get('projects/{id}/pathways', IndexProjectPathwaysController::class);
@@ -62,15 +65,16 @@ Route::group([
         return $request->user();
     });
 
-    // KeyRooms CRUD
-    Route::post('keys/{id}/rooms', CreateKeyRoomController::class);
-    Route::patch('keys/{id}/rooms/{id2}', UpdateKeyRoomController::class);
-    Route::delete('keys/{id}/rooms/{id2}', DeleteKeyRoomController::class);
-
     // Keys CRUD
     Route::post('projects/{id}/keys', CreateKeyController::class);
     Route::patch('keys/{id}', UpdateKeyController::class);
     Route::delete('keys/{id}', DeleteKeyController::class);
+    Route::post('keys/{id}/pathways', CreateKeyPathwayController::class);
+    Route::patch('keys/{id}/pathways/{id2}', UpdateKeyPathwayController::class);
+    Route::delete('keys/{id}/pathways/{id2}', DeleteKeyPathwayController::class);
+    Route::post('keys/{id}/rooms', CreateKeyRoomController::class);
+    Route::patch('keys/{id}/rooms/{id2}', UpdateKeyRoomController::class);
+    Route::delete('keys/{id}/rooms/{id2}', DeleteKeyRoomController::class);
 
     // Pathways CRUD
     Route::post('projects/{id}/pathways', CreatePathwayController::class);

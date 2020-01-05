@@ -50,6 +50,10 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  * @property int $roomId
  * @property \Illuminate\Support\Carbon|null $createdAt
  * @property \Illuminate\Support\Carbon|null $updatedAt
+ * @property int $keyId
+ * @property int $roomId
+ * @property \Illuminate\Support\Carbon|null $createdAt
+ * @property \Illuminate\Support\Carbon|null $updatedAt
  */
 class KeyRoom extends Pivot
 {

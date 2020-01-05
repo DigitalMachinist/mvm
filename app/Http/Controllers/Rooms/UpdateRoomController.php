@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Rooms;
 
-use App\Http\Requests\UpdateRoomRequest;
+use App\Http\Requests\Rooms\UpdateRoomRequest;
 use App\Http\Resources\RoomResource;
 use Domain\Rooms\Room;
 use Illuminate\Http\JsonResponse;

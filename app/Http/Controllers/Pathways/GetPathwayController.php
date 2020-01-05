@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 
 class GetPathwayController
 {
-    public function __invoke(Request $request, int $room_id): JsonResponse
+    public function __invoke(Request $request, int $pathway_id): JsonResponse
     {
-        $pathway = Pathway::findOrFail($room_id);
+        $pathway = Pathway::findOrFail($pathway_id);
 
         return (new PathwayResource($pathway))
             ->toResponse($request);

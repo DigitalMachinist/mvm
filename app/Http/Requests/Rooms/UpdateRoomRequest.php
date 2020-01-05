@@ -1,21 +1,34 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Rooms;
 
-class UpdateProjectRequest extends CreateProjectRequest
+class UpdateRoomRequest extends CreateRoomRequest
 {
     public function rules(): array
     {
         return [
-            'is_public' => [
-                'boolean',
-            ],
             'name' => [
                 'string',
                 'max:255',
             ],
             'description' => [
                 'string',
+            ],
+            'difficulty' => [
+                'integer',
+                'min:1',
+            ],
+            'x' => [
+                'integer',
+            ],
+            'y' => [
+                'integer',
+            ],
+            'width' => [
+                'integer',
+            ],
+            'height' => [
+                'integer',
             ],
             'colour' => [
                 'nullable',

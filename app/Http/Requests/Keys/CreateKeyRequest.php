@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Keys;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreatePathwayRequest extends FormRequest
+class CreateKeyRequest extends FormRequest
 {
     public function authorize(): bool
     {

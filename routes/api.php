@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Keys\CreateKeyController;
+use App\Http\Controllers\Keys\DeleteKeyController;
+use App\Http\Controllers\Keys\GetKeyController;
+use App\Http\Controllers\Keys\IndexProjectKeysController;
+use App\Http\Controllers\Keys\UpdateKeyController;
 use App\Http\Controllers\Pathways\CreatePathwayController;
 use App\Http\Controllers\Pathways\DeletePathwayController;
 use App\Http\Controllers\Pathways\GetPathwayController;
@@ -22,17 +27,18 @@ use Illuminate\Http\Request;
 // Users
 // TODO
 
-// Projects
-Route::get('projects', IndexProjectsController::class);
-Route::get('projects/{id}', GetProjectController::class);
-Route::get('users/{id}/projects', IndexUserProjectsController::class);
-
 // Keys
-// TODO
+Route::get('projects/{id}/keys', IndexProjectKeysController::class);
+Route::get('keys/{id}', GetKeyController::class);
 
 // Pathways
 Route::get('projects/{id}/pathways', IndexProjectPathwaysController::class);
 Route::get('pathways/{id}', GetPathwayController::class);
+
+// Projects
+Route::get('projects', IndexProjectsController::class);
+Route::get('projects/{id}', GetProjectController::class);
+Route::get('users/{id}/projects', IndexUserProjectsController::class);
 
 // Rooms
 Route::get('projects/{id}/rooms', IndexProjectRoomsController::class);
@@ -49,15 +55,20 @@ Route::group([
         return $request->user();
     });
 
-    // Projects CRUD
-    Route::post('projects', CreateProjectController::class);
-    Route::patch('projects/{id}', UpdateProjectController::class);
-    Route::delete('projects/{id}', DeleteProjectController::class);
+    // Keys CRUD
+    Route::post('projects/{id}/keys', CreateKeyController::class);
+    Route::patch('keys/{id}', UpdateKeyController::class);
+    Route::delete('keys/{id}', DeleteKeyController::class);
 
     // Pathways CRUD
     Route::post('projects/{id}/pathways', CreatePathwayController::class);
     Route::patch('pathways/{id}', UpdatePathwayController::class);
     Route::delete('pathways/{id}', DeletePathwayController::class);
+
+    // Projects CRUD
+    Route::post('projects', CreateProjectController::class);
+    Route::patch('projects/{id}', UpdateProjectController::class);
+    Route::delete('projects/{id}', DeleteProjectController::class);
 
     // Rooms CRUD
     Route::post('projects/{id}/rooms', CreateRoomController::class);

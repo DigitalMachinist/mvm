@@ -146,3 +146,9 @@ PHP code symbol maps are auto-generated on `composer update`, `composer install`
 ## Frontend Notes
 
 This app's frontend is based off of [Laravel-Nuxt](https://github.com/cretueusebiu/laravel-nuxt), so feel free to check their documentation regarding any issues with the frontend setup.
+
+## Examples worth remembering
+
+- [KonvaJs Docs](https://konvajs.org/docs/)
+- [KonvaJS snap element to grid](https://codepen.io/pierrebleroux/pen/gGpvxJ)
+- [KonvaJS resize rectangle with handles](https://jsfiddle.net/joncampbell/u7v1xas2/5/)

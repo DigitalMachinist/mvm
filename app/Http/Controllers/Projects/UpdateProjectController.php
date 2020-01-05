@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Projects;
 
-use App\Http\Requests\UpdateProjectRequest;
+use App\Http\Requests\Projects\UpdateProjectRequest;
 use App\Http\Resources\ProjectResource;
 use Domain\Projects\Project;
 use Illuminate\Http\JsonResponse;

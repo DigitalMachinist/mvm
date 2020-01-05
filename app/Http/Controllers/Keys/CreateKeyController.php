@@ -1,32 +1,32 @@
 <?php
 
-namespace App\Http\Controllers\Rooms;
+namespace App\Http\Controllers\Keys;
 
-use App\Http\Requests\Rooms\CreateRoomRequest;
-use App\Http\Resources\RoomResource;
+use App\Http\Requests\Keys\CreateKeyRequest;
+use App\Http\Resources\KeyResource;
 use Domain\Projects\Project;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 
-class CreateRoomController
+class CreateKeyController
 {
-    public function __invoke(CreateRoomRequest $request, int $project_id): JsonResponse
+    public function __invoke(CreateKeyRequest $request, int $project_id): JsonResponse
     {
-        $room = null;
+        $key = null;
         DB::transaction(
-            function () use ($request, $project_id, &$room) {
+            function () use ($request, $project_id, &$key) {
                 $project = Project::findOrFail($project_id);
                 if ($project->user_id !== $request->user()->id) {
                     abort(403, 'Not yours.');
                 }
 
-                $room = $project
-                    ->rooms()
+                $key = $project
+                    ->keys()
                     ->create($request->validated());
             }
         );
 
-        return (new RoomResource($room))
+        return (new KeyResource($key))
             ->toResponse($request);
     }
 }

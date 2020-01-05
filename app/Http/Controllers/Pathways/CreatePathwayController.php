@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Pathways;
 
-use App\Http\Requests\CreatePathwayRequest;
+use App\Http\Requests\Pathways\CreatePathwayRequest;
 use App\Http\Resources\PathwayResource;
 use Domain\Projects\Project;
 use Illuminate\Http\JsonResponse;

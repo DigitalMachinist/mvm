@@ -30,7 +30,7 @@ class UpdateRoomControllerTest extends TestCase
             ]);
 
         $response = $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/rooms/{$firelinkShrine->id}", [
                 'name' => $name = 'ForeLonk Shrone',
             ]);
@@ -84,7 +84,7 @@ class UpdateRoomControllerTest extends TestCase
             ]);
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/rooms/{$firelinkShrine->id}", [
                 'name' => 'YOU DIED',
             ])
@@ -96,7 +96,7 @@ class UpdateRoomControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/rooms/1", [
                 'name' => 'YOU DIED',
             ])

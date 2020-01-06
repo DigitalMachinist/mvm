@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Pathways;
 
-use App\Http\Resources\SuccessResource;
+use App\Http\Resources\BaseResource;
 use Domain\Pathways\Pathway;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -23,7 +23,7 @@ class DeletePathwayController
             }
         );
 
-        return (new SuccessResource)
+        return (new BaseResource)
             ->toResponse($request);
     }
 }

@@ -22,7 +22,7 @@ class DeleteProjectControllerTest extends TestCase
             ]);
 
         $response = $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->deleteJson("/api/projects/{$project->id}");
 
         $response->assertStatus(200);
@@ -59,7 +59,7 @@ class DeleteProjectControllerTest extends TestCase
             ]);
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->deleteJson("/api/projects/{$project->id}")
             ->assertStatus(403);
     }
@@ -69,7 +69,7 @@ class DeleteProjectControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->deleteJson("/api/projects/1")
             ->assertStatus(404);
     }

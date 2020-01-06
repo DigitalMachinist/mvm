@@ -30,7 +30,7 @@ class UpdatePathwayControllerTest extends TestCase
             ]);
 
         $response = $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/pathways/{$firelinkShrineEast->id}", [
                 'name' => $name = 'ForeLonk Shrone --> WEST',
             ]);
@@ -84,7 +84,7 @@ class UpdatePathwayControllerTest extends TestCase
             ]);
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/pathways/{$firelinkShrineEast->id}", [
                 'name' => 'YOU DIED',
             ])
@@ -96,7 +96,7 @@ class UpdatePathwayControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/pathways/1", [
                 'name' => 'YOU DIED',
             ])

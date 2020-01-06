@@ -30,7 +30,7 @@ class UpdateKeyControllerTest extends TestCase
             ]);
 
         $response = $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/keys/{$masterKey->id}", [
                 'name' => $name = 'Master Sword',
             ]);
@@ -84,7 +84,7 @@ class UpdateKeyControllerTest extends TestCase
             ]);
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/keys/{$masterKey->id}", [
                 'name' => 'YOU DIED',
             ])
@@ -96,7 +96,7 @@ class UpdateKeyControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/keys/1", [
                 'name' => 'YOU DIED',
             ])

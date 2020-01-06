@@ -23,7 +23,7 @@ class CreatePathwayControllerTest extends TestCase
             ]);
 
         $response = $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->postJson("/api/projects/{$darkSouls->id}/pathways", [
                 'name'        => $name = 'Firelink Shrine --> EAST',
                 'description' => 'Time to get BIT',
@@ -71,7 +71,7 @@ class CreatePathwayControllerTest extends TestCase
             ]);
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->postJson("/api/projects/{$darkSouls->id}/pathways", [
                 'name'        => 'Firelink Shrine --> EAST',
                 'description' => 'Time to get BIT',
@@ -87,7 +87,7 @@ class CreatePathwayControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->postJson("/api/projects/1/pathways", [
                 'name'        => 'Firelink Shrine --> EAST',
                 'description' => 'Time to get BIT',

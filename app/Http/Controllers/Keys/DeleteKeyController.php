@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Keys;
 
-use App\Http\Resources\SuccessResource;
+use App\Http\Resources\BaseResource;
 use Domain\Keys\Key;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -23,7 +23,7 @@ class DeleteKeyController
             }
         );
 
-        return (new SuccessResource)
+        return (new BaseResource)
             ->toResponse($request);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\KeyRooms;
 
-use App\Http\Resources\SuccessResource;
+use App\Http\Resources\BaseResource;
 use Domain\KeyRooms\KeyRoom;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -27,7 +27,7 @@ class DeleteKeyRoomController
             }
         );
 
-        return (new SuccessResource)
+        return (new BaseResource)
             ->toResponse($request);
     }
 }

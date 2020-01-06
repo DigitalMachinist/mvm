@@ -37,7 +37,7 @@ class CreateKeyPathwayControllerTest extends TestCase
             ]);
 
         $response = $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->postJson("/api/keys/{$masterKey->id}/pathways", [
                 'key_id'     => $masterKey->id,
                 'pathway_id' => $firelinkShrine->id,
@@ -114,7 +114,7 @@ class CreateKeyPathwayControllerTest extends TestCase
             ]);
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->postJson("/api/keys/{$masterKey->id}/pathways", [
                 'key_id'     => $masterKey->id,
                 'pathway_id' => $firelinkShrine->id,
@@ -127,7 +127,7 @@ class CreateKeyPathwayControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->postJson("/api/keys/1/pathways", [
                 'key_id'     => 1,
                 'pathway_id' => 1,
@@ -164,7 +164,7 @@ class CreateKeyPathwayControllerTest extends TestCase
             ]);
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->postJson("/api/keys/{$masterKey->id}/pathways", [
                 'key_id'     => $masterKey->id,
                 'pathway_id' => $firelinkShrine->id,
@@ -195,7 +195,7 @@ class CreateKeyPathwayControllerTest extends TestCase
             ]);
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->postJson("/api/keys/{$masterKey->id}/pathways", [
                 'key_id'  => $masterKey->id,
                 'pathway_id' => $firelinkShrine->id,

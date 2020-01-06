@@ -26,30 +26,6 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  * @method static \Illuminate\Database\Eloquent\Builder|\Domain\KeyPathways\KeyPathway whereKeyId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Domain\KeyPathways\KeyPathway wherePathwayId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Domain\KeyPathways\KeyPathway whereUpdatedAt($value)
- * @property int $keyId
- * @property int $pathwayId
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property int $keyId
- * @property int $pathwayId
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property int $keyId
- * @property int $pathwayId
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property int $keyId
- * @property int $pathwayId
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property int $keyId
- * @property int $pathwayId
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property int $keyId
- * @property int $pathwayId
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
  */
 class KeyPathway extends Pivot
 {

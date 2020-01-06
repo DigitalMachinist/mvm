@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\KeyPathways;
 
-use App\Http\Resources\SuccessResource;
+use App\Http\Resources\BaseResource;
 use Domain\KeyPathways\KeyPathway;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -27,7 +27,7 @@ class DeleteKeyPathwayController
             }
         );
 
-        return (new SuccessResource)
+        return (new BaseResource)
             ->toResponse($request);
     }
 }

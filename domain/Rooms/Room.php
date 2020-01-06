@@ -43,43 +43,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|\Domain\Rooms\Room whereWidth($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Domain\Rooms\Room whereX($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Domain\Rooms\Room whereY($value)
- * @property int $projectId
- * @property string|null $imageUrl
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property int $projectId
- * @property string|null $imageUrl
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property int $projectId
- * @property string|null $imageUrl
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyRooms\KeyRoom[] $keyRooms
- * @property-read int|null $keyRoomsCount
- * @property-read \Domain\Projects\Project $project
- * @property int $projectId
- * @property string|null $imageUrl
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyRooms\KeyRoom[] $keyRooms
- * @property-read int|null $keyRoomsCount
- * @property-read \Domain\Keys\KeyCollection|\Domain\Keys\Key[] $keys
- * @property-read int|null $keysCount
- * @property int $projectId
- * @property string|null $imageUrl
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyRooms\KeyRoom[] $keyRooms
- * @property-read int|null $keyRoomsCount
- * @property-read int|null $keysCount
- * @property int $projectId
- * @property string|null $imageUrl
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyRooms\KeyRoom[] $keyRooms
- * @property-read int|null $keyRoomsCount
- * @property-read int|null $keysCount
  */
 class Room extends Model
 {

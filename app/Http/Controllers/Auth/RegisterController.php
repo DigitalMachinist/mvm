@@ -2,72 +2,43 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Providers\RouteServiceProvider;
-use Domain\Users\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Resources\BaseResource;
+use Domain\Users\Actions\RegisterUser;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
-class RegisterController extends Controller
+class RegisterController
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
-    use RegistersUsers;
-
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function __invoke(
+        RegisterRequest $request,
+        RegisterUser $registerUser
+    ): JsonResponse
     {
-        $this->middleware('guest');
-    }
+        DB::transaction(function () use ($request, $registerUser) {
+            try {
+                $registerUser
+                    ->execute(
+                        $request->input('email'),
+                        $request->input('password'),
+                        $request->input('name')
+                    );
+            }
+            catch (\Domain\Users\Exceptions\BadPasswordException $e) {
+                throw ValidationException::withMessages([
+                    'password' => 'password.insecure',
+                ]);
+            }
+        });
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \Domain\Users\User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        return (new BaseResource)
+            ->additional([
+                'meta' => [
+                    'status' => 'auth.registered',
+                ],
+            ])
+            ->toResponse($request)
+            ->setStatusCode(201);
     }
 }

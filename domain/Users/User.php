@@ -3,10 +3,10 @@
 namespace Domain\Users;
 
 use Domain\Projects\Project;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 /**
  * Domain\Users\User
@@ -34,101 +34,20 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Eloquent\Builder|\Domain\Users\User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Domain\Users\User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Domain\Users\User whereUpdatedAt($value)
- * @property \Illuminate\Support\Carbon|null $emailVerifiedAt
- * @property string|null $rememberToken
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read int|null $notificationsCount
- * @property \Illuminate\Support\Carbon|null $emailVerifiedAt
- * @property string|null $rememberToken
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read int|null $notificationsCount
- * @property \Illuminate\Support\Carbon|null $emailVerifiedAt
- * @property string|null $rememberToken
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read int|null $notificationsCount
- * @property \Illuminate\Support\Carbon|null $emailVerifiedAt
- * @property string|null $rememberToken
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read int|null $notificationsCount
- * @property \Illuminate\Support\Carbon|null $emailVerifiedAt
- * @property string|null $rememberToken
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read int|null $notificationsCount
- * @property \Illuminate\Support\Carbon|null $emailVerifiedAt
- * @property string|null $rememberToken
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read int|null $notificationsCount
- * @property \Illuminate\Support\Carbon|null $emailVerifiedAt
- * @property string|null $rememberToken
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read int|null $notificationsCount
- * @property \Illuminate\Support\Carbon|null $emailVerifiedAt
- * @property string|null $rememberToken
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read int|null $notificationsCount
- * @property \Illuminate\Support\Carbon|null $emailVerifiedAt
- * @property string|null $rememberToken
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read int|null $notificationsCount
- * @property \Illuminate\Support\Carbon|null $emailVerifiedAt
- * @property string|null $rememberToken
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read int|null $notificationsCount
- * @property \Illuminate\Support\Carbon|null $emailVerifiedAt
- * @property string|null $rememberToken
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read int|null $notificationsCount
  * @property-read \Domain\Projects\ProjectCollection|\Domain\Projects\Project[] $projects
  * @property-read int|null $projectsCount
- * @property \Illuminate\Support\Carbon|null $emailVerifiedAt
- * @property string|null $rememberToken
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read int|null $notificationsCount
- * @property-read int|null $projectsCount
- * @property \Illuminate\Support\Carbon|null $emailVerifiedAt
- * @property string|null $rememberToken
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read int|null $notificationsCount
- * @property-read int|null $projectsCount
- * @property \Illuminate\Support\Carbon|null $emailVerifiedAt
- * @property string|null $rememberToken
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read int|null $notificationsCount
- * @property-read int|null $projectsCount
- * @property \Illuminate\Support\Carbon|null $emailVerifiedAt
- * @property string|null $rememberToken
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read int|null $notificationsCount
- * @property-read int|null $projectsCount
- * @property \Illuminate\Support\Carbon|null $emailVerifiedAt
- * @property string|null $rememberToken
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read int|null $notificationsCount
- * @property-read int|null $projectsCount
- * @property \Illuminate\Support\Carbon|null $emailVerifiedAt
- * @property string|null $rememberToken
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read int|null $notificationsCount
- * @property-read int|null $projectsCount
+ * @property \Illuminate\Support\Carbon|null $emailVerifyExpiresAt
+ * @property \Illuminate\Support\Carbon|null $passwordResetAt
+ * @property \Illuminate\Support\Carbon|null $passwordResetExpiresAt
+ * @property string|null $emailVerifyToken
+ * @property string|null $passwordResetToken
+ * @method static \Illuminate\Database\Eloquent\Builder|\Domain\Users\User whereEmailVerifyExpiresAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Domain\Users\User whereEmailVerifyToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Domain\Users\User wherePasswordResetAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Domain\Users\User wherePasswordResetExpiresAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Domain\Users\User wherePasswordResetToken($value)
  */
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
@@ -136,10 +55,15 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $table = 'users';
 
+    protected $primaryKey = 'id';
+
     protected $dates = [
-        'email_verified_at',
         'created_at',
         'updated_at',
+        'email_verified_at',
+        'email_verify_expires_at',
+        'password_reset_at',
+        'password_reset_expires_at',
     ];
 
     protected $fillable = [
@@ -151,6 +75,8 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password',
         'remember_token',
+        'password_reset_token',
+        'email_verify_token'
     ];
 
     // Boot //
@@ -178,5 +104,45 @@ class User extends Authenticatable implements MustVerifyEmail
     public function newEloquentBuilder($query): UserBuilder
     {
         return new UserBuilder($query);
+    }
+
+    // JWTSubject Implementation //
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    // Notifications //
+
+    public function routeNotificationForMail()
+    {
+        return $this->email;
+    }
+
+    // Helpers //
+
+    public function isEmailVerified(): bool
+    {
+        return $this->email_verified_at !== null;
+    }
+
+    public function isEmailVerifyExpired(): bool
+    {
+        return $this->email_verify_expires_at
+            ? $this->email_verify_expires_at->lte(now())
+            : false;
+    }
+
+    public function isPasswordResetExpired(): bool
+    {
+        return $this->password_reset_expires_at
+            ? $this->password_reset_expires_at->lte(now())
+            : false;
     }
 }

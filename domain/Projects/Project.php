@@ -93,6 +93,46 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read int|null $pathwaysCount
  * @property-read int|null $roomsCount
  * @property-read \Domain\Rooms\Room|null $startRoom
+ * @property int $userId
+ * @property int|null $startRoomId
+ * @property bool $isPublic
+ * @property string|null $imageUrl
+ * @property \Illuminate\Support\Carbon|null $createdAt
+ * @property \Illuminate\Support\Carbon|null $updatedAt
+ * @property-read int|null $keysCount
+ * @property-read int|null $pathwaysCount
+ * @property-read int|null $roomsCount
+ * @property-read \Domain\Rooms\Room|null $startRoom
+ * @property int $userId
+ * @property int|null $startRoomId
+ * @property bool $isPublic
+ * @property string|null $imageUrl
+ * @property \Illuminate\Support\Carbon|null $createdAt
+ * @property \Illuminate\Support\Carbon|null $updatedAt
+ * @property-read int|null $keysCount
+ * @property-read int|null $pathwaysCount
+ * @property-read int|null $roomsCount
+ * @property-read \Domain\Rooms\Room|null $startRoom
+ * @property int $userId
+ * @property int|null $startRoomId
+ * @property bool $isPublic
+ * @property string|null $imageUrl
+ * @property \Illuminate\Support\Carbon|null $createdAt
+ * @property \Illuminate\Support\Carbon|null $updatedAt
+ * @property-read int|null $keysCount
+ * @property-read int|null $pathwaysCount
+ * @property-read int|null $roomsCount
+ * @property-read \Domain\Rooms\Room|null $startRoom
+ * @property int $userId
+ * @property int|null $startRoomId
+ * @property bool $isPublic
+ * @property string|null $imageUrl
+ * @property \Illuminate\Support\Carbon|null $createdAt
+ * @property \Illuminate\Support\Carbon|null $updatedAt
+ * @property-read int|null $keysCount
+ * @property-read int|null $pathwaysCount
+ * @property-read int|null $roomsCount
+ * @property-read \Domain\Rooms\Room|null $startRoom
  */
 class Project extends Model
 {

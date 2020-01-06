@@ -35,18 +35,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|\Domain\Keys\Key whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Domain\Keys\Key whereProjectId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Domain\Keys\Key whereUpdatedAt($value)
- * @property int $projectId
- * @property string|null $imageUrl
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property int $projectId
- * @property string|null $imageUrl
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property int $projectId
- * @property string|null $imageUrl
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
  * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyPathways\KeyPathway[] $keyPathways
  * @property-read int|null $keyPathwaysCount
  * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyRooms\KeyRoom[] $keyRooms
@@ -55,36 +43,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read int|null $pathwaysCount
  * @property-read \Domain\Projects\Project $project
  * @property-read \Domain\Rooms\RoomCollection|\Domain\Rooms\Room[] $rooms
- * @property-read int|null $roomsCount
- * @property int $projectId
- * @property string|null $imageUrl
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyPathways\KeyPathway[] $keyPathways
- * @property-read int|null $keyPathwaysCount
- * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyRooms\KeyRoom[] $keyRooms
- * @property-read int|null $keyRoomsCount
- * @property-read int|null $pathwaysCount
- * @property-read int|null $roomsCount
- * @property int $projectId
- * @property string|null $imageUrl
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyPathways\KeyPathway[] $keyPathways
- * @property-read int|null $keyPathwaysCount
- * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyRooms\KeyRoom[] $keyRooms
- * @property-read int|null $keyRoomsCount
- * @property-read int|null $pathwaysCount
- * @property-read int|null $roomsCount
- * @property int $projectId
- * @property string|null $imageUrl
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyPathways\KeyPathway[] $keyPathways
- * @property-read int|null $keyPathwaysCount
- * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\KeyRooms\KeyRoom[] $keyRooms
- * @property-read int|null $keyRoomsCount
- * @property-read int|null $pathwaysCount
  * @property-read int|null $roomsCount
  */
 class Key extends Model

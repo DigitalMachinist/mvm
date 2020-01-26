@@ -51,7 +51,7 @@ class UpdateKeyRoomControllerTest extends TestCase
             ]);
 
         $response = $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/keys/{$keyRoom->key_id}/rooms/{$keyRoom->room_id}", [
                 'room_id' => $undeadSettlement->id,
             ]);
@@ -155,7 +155,7 @@ class UpdateKeyRoomControllerTest extends TestCase
             ]);
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/keys/{$keyRoom->key_id}/rooms/{$keyRoom->room_id}", [
                 'room_id' => $undeadSettlement->id,
             ])
@@ -167,7 +167,7 @@ class UpdateKeyRoomControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/keys/1/rooms/1", [
                 'room_id' => 1,
             ])
@@ -210,7 +210,7 @@ class UpdateKeyRoomControllerTest extends TestCase
             ]);
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/keys/{$keyRoom->key_id}/rooms/{$keyRoom->room_id}", [
                 'key_id'  => $skeletonKey->id,
             ])
@@ -253,7 +253,7 @@ class UpdateKeyRoomControllerTest extends TestCase
             ]);
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/keys/{$keyRoom->key_id}/rooms/{$keyRoom->room_id}", [
                 'room_id' => $theNexus->id,
             ])

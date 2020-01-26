@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Projects;
 
-use App\Http\Resources\SuccessResource;
+use App\Http\Resources\BaseResource;
 use Domain\Projects\Project;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -23,7 +23,7 @@ class DeleteProjectController
             }
         );
 
-        return (new SuccessResource)
+        return (new BaseResource)
             ->toResponse($request);
     }
 }

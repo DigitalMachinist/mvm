@@ -30,30 +30,6 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  * @method static \Illuminate\Database\Eloquent\Builder|\Domain\KeyRooms\KeyRoom whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Domain\KeyRooms\KeyRoom whereX($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Domain\KeyRooms\KeyRoom whereY($value)
- * @property int $keyId
- * @property int $roomId
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property int $keyId
- * @property int $roomId
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property int $keyId
- * @property int $roomId
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property int $keyId
- * @property int $roomId
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property int $keyId
- * @property int $roomId
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @property int $keyId
- * @property int $roomId
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
  */
 class KeyRoom extends Pivot
 {

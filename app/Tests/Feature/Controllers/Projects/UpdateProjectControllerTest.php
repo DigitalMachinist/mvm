@@ -23,7 +23,7 @@ class UpdateProjectControllerTest extends TestCase
             ]);
 
         $response = $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/projects/{$project->id}", [
                 'name' => $name = 'Super Metroid',
             ]);
@@ -72,7 +72,7 @@ class UpdateProjectControllerTest extends TestCase
             ]);
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/projects/{$project->id}", [
                 'name' => 'YOU DIED',
             ])
@@ -84,7 +84,7 @@ class UpdateProjectControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/projects/1", [
                 'name' => 'YOU DIED',
             ])

@@ -51,7 +51,7 @@ class UpdateKeyPathwayControllerTest extends TestCase
             ]);
 
         $response = $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/keys/{$keyPathway->key_id}/pathways/{$keyPathway->pathway_id}", [
                 'pathway_id' => $undeadSettlement->id,
             ]);
@@ -155,7 +155,7 @@ class UpdateKeyPathwayControllerTest extends TestCase
             ]);
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/keys/{$keyPathway->key_id}/pathways/{$keyPathway->pathway_id}", [
                 'pathway_id' => $undeadSettlement->id,
             ])
@@ -167,7 +167,7 @@ class UpdateKeyPathwayControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/keys/1/pathways/1", [
                 'pathway_id' => 1,
             ])
@@ -210,7 +210,7 @@ class UpdateKeyPathwayControllerTest extends TestCase
             ]);
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/keys/{$keyPathway->key_id}/pathways/{$keyPathway->pathway_id}", [
                 'key_id'  => $skeletonKey->id,
             ])
@@ -253,7 +253,7 @@ class UpdateKeyPathwayControllerTest extends TestCase
             ]);
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->patchJson("/api/keys/{$keyPathway->key_id}/pathways/{$keyPathway->pathway_id}", [
                 'pathway_id' => $theNexus->id,
             ])

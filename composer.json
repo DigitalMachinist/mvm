@@ -34,7 +34,7 @@
         "spatie/laravel-model-states": "^1.5",
         "spatie/laravel-queueable-action": "^2.3",
         "spatie/laravel-view-models": "^1.2",
-        "tymon/jwt-auth": "1.0.*"
+        "tymon/jwt-auth": "dev-develop"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.6",

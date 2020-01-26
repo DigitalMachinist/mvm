@@ -95,6 +95,7 @@ These dashboards are offered by external services, so you'll need login creds to
 | Algolia     | [https://www.algolia.com/apps/Z0DB271DZ3/dashboard](https://www.algolia.com/apps/Z0DB271DZ3/dashboard) |
 | Bugsnag     | [https://app.bugsnag.com/axon-interactive/mvm](https://app.bugsnag.com/axon-interactive/mvm) |
 | Cloudinary  | [https://cloudinary.com/console/welcome](https://cloudinary.com/console/welcome) |
+| Codecov     | [https://codecov.io/gh/DigitalMachinist/mvm](https://codecov.io/gh/DigitalMachinist/mvm) |
 
 ## Local MySQL Connection
 
@@ -134,6 +135,7 @@ PHP code symbol maps are auto-generated on `composer update`, `composer install`
 - [spatie/laravel-enum](https://github.com/spatie/laravel-enum)
 - [spatie/laravel-model-states](https://github.com/spatie/laravel-model-states)
 - [spatie/laravel-queueable-action](https://github.com/spatie/laravel-queueable-action)
+- [tymondesigns/jwt-auth](https://github.com/tymondesigns/jwt-auth)
 
 #### Dev only packages
 

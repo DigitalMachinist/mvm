@@ -29,7 +29,7 @@ class DeleteKeyControllerTest extends TestCase
             ]);
 
         $response = $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->deleteJson("/api/keys/{$masterKey->id}");
 
         $response->assertStatus(200);
@@ -71,7 +71,7 @@ class DeleteKeyControllerTest extends TestCase
             ]);
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->deleteJson("/api/keys/{$masterKey->id}")
             ->assertStatus(403);
     }
@@ -81,7 +81,7 @@ class DeleteKeyControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->deleteJson("/api/keys/1")
             ->assertStatus(404);
     }

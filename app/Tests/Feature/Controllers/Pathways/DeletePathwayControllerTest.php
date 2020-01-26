@@ -29,7 +29,7 @@ class DeletePathwayControllerTest extends TestCase
             ]);
 
         $response = $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->deleteJson("/api/pathways/{$firelinkShrineEast->id}");
 
         $response->assertStatus(200);
@@ -71,7 +71,7 @@ class DeletePathwayControllerTest extends TestCase
             ]);
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->deleteJson("/api/pathways/{$firelinkShrineEast->id}")
             ->assertStatus(403);
     }
@@ -81,7 +81,7 @@ class DeletePathwayControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->deleteJson("/api/pathways/1")
             ->assertStatus(404);
     }

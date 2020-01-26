@@ -16,7 +16,7 @@ class CreateProjectControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $response = $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->postJson("/api/projects", [
                 'name'        => $name = 'Mega Man: Zero',
                 'description' => 'Swank-ass trails',

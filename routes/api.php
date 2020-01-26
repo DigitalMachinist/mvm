@@ -1,93 +1,80 @@
 <?php
 
-use App\Http\Controllers\KeyPathways\CreateKeyPathwayController;
-use App\Http\Controllers\KeyPathways\DeleteKeyPathwayController;
-use App\Http\Controllers\KeyPathways\GetKeyPathwayController;
-use App\Http\Controllers\KeyPathways\UpdateKeyPathwayController;
-use App\Http\Controllers\KeyRooms\CreateKeyRoomController;
-use App\Http\Controllers\KeyRooms\DeleteKeyRoomController;
-use App\Http\Controllers\KeyRooms\GetKeyRoomController;
-use App\Http\Controllers\KeyRooms\UpdateKeyRoomController;
-use App\Http\Controllers\Keys\CreateKeyController;
-use App\Http\Controllers\Keys\DeleteKeyController;
-use App\Http\Controllers\Keys\GetKeyController;
-use App\Http\Controllers\Keys\IndexProjectKeysController;
-use App\Http\Controllers\Keys\UpdateKeyController;
-use App\Http\Controllers\Pathways\CreatePathwayController;
-use App\Http\Controllers\Pathways\DeletePathwayController;
-use App\Http\Controllers\Pathways\GetPathwayController;
-use App\Http\Controllers\Pathways\IndexProjectPathwaysController;
-use App\Http\Controllers\Pathways\UpdatePathwayController;
-use App\Http\Controllers\Projects\CreateProjectController;
-use App\Http\Controllers\Projects\DeleteProjectController;
-use App\Http\Controllers\Projects\GetProjectController;
-use App\Http\Controllers\Projects\IndexProjectsController;
-use App\Http\Controllers\Projects\IndexUserProjectsController;
-use App\Http\Controllers\Projects\UpdateProjectController;
-use App\Http\Controllers\Rooms\CreateRoomController;
-use App\Http\Controllers\Rooms\DeleteRoomController;
-use App\Http\Controllers\Rooms\GetRoomController;
-use App\Http\Controllers\Rooms\IndexProjectRoomsController;
-use App\Http\Controllers\Rooms\UpdateRoomController;
-use App\Http\Middleware\Authenticate;
-use Illuminate\Http\Request;
+// Auth Routes (Heavily Throttled)
+Route::group([
+    'middleware' => [
+        'throttle:5,5',
+    ],
+], function () {
+    Route::post('login',                        App\Http\Controllers\Auth\LoginController::class);
+    Route::post('password',                     App\Http\Controllers\Auth\SetPasswordController::class);
+    Route::post('password/forgot',              App\Http\Controllers\Auth\ForgotPasswordController::class);
+    Route::post('refresh',                      App\Http\Controllers\Auth\RefreshController::class);
+    Route::post('register',                     App\Http\Controllers\Auth\RegisterController::class);
+    Route::post('verify',                       App\Http\Controllers\Auth\VerifyEmailController::class);
+    Route::post('verify/resend',                App\Http\Controllers\Auth\ResendVerifyEmailController::class);
+});
 
-// Users
-// TODO
+// Public Routes
+Route::group([
+    'middleware' => [
+        'throttle:60,1',
+    ],
+], function () {
+    // Keys
+    Route::get('projects/{id}/keys',            App\Http\Controllers\Keys\IndexProjectKeysController::class);
+    Route::get('keys/{id}',                     App\Http\Controllers\Keys\GetKeyController::class);
+    Route::get('keys/{id}/pathways/{id2}',      App\Http\Controllers\KeyPathways\GetKeyPathwayController::class);
+    Route::get('keys/{id}/rooms/{id2}',         App\Http\Controllers\KeyRooms\GetKeyRoomController::class);
 
-// Keys
-Route::get('projects/{id}/keys', IndexProjectKeysController::class);
-Route::get('keys/{id}', GetKeyController::class);
-Route::get('keys/{id}/pathways/{id2}', GetKeyPathwayController::class);
-Route::get('keys/{id}/rooms/{id2}', GetKeyRoomController::class);
+    // Pathways
+    Route::get('projects/{id}/pathways',        App\Http\Controllers\Pathways\IndexProjectPathwaysController::class);
+    Route::get('pathways/{id}',                 App\Http\Controllers\Pathways\GetPathwayController::class);
 
-// Pathways
-Route::get('projects/{id}/pathways', IndexProjectPathwaysController::class);
-Route::get('pathways/{id}', GetPathwayController::class);
+    // Projects
+    Route::get('projects',                      App\Http\Controllers\Projects\IndexProjectsController::class);
+    Route::get('projects/{id}',                 App\Http\Controllers\Projects\GetProjectController::class);
+    Route::get('users/{id}/projects',           App\Http\Controllers\Projects\IndexUserProjectsController::class);
 
-// Projects
-Route::get('projects', IndexProjectsController::class);
-Route::get('projects/{id}', GetProjectController::class);
-Route::get('users/{id}/projects', IndexUserProjectsController::class);
-
-// Rooms
-Route::get('projects/{id}/rooms', IndexProjectRoomsController::class);
-Route::get('rooms/{id}', GetRoomController::class);
+    // Rooms
+    Route::get('projects/{id}/rooms',           App\Http\Controllers\Rooms\IndexProjectRoomsController::class);
+    Route::get('rooms/{id}',                    App\Http\Controllers\Rooms\GetRoomController::class);
+});
 
 // Require Authentication
 Route::group([
     'middleware' => [
-        Authenticate::class,
+        'throttle:60,1',
+        'auth:api',
     ],
 ], function () {
-    // Self User
-    Route::get('user', function (Request $request) {
-        return $request->user();
-    });
+    // Auth
+    Route::post('logout',                       App\Http\Controllers\Auth\LogoutController::class);
+    Route::get('user',                          App\Http\Controllers\Users\GetSelfUserController::class);
 
     // Keys CRUD
-    Route::post('projects/{id}/keys', CreateKeyController::class);
-    Route::patch('keys/{id}', UpdateKeyController::class);
-    Route::delete('keys/{id}', DeleteKeyController::class);
-    Route::post('keys/{id}/pathways', CreateKeyPathwayController::class);
-    Route::patch('keys/{id}/pathways/{id2}', UpdateKeyPathwayController::class);
-    Route::delete('keys/{id}/pathways/{id2}', DeleteKeyPathwayController::class);
-    Route::post('keys/{id}/rooms', CreateKeyRoomController::class);
-    Route::patch('keys/{id}/rooms/{id2}', UpdateKeyRoomController::class);
-    Route::delete('keys/{id}/rooms/{id2}', DeleteKeyRoomController::class);
+    Route::post('projects/{id}/keys',           App\Http\Controllers\Keys\CreateKeyController::class);
+    Route::patch('keys/{id}',                   App\Http\Controllers\Keys\UpdateKeyController::class);
+    Route::delete('keys/{id}',                  App\Http\Controllers\Keys\DeleteKeyController::class);
+    Route::post('keys/{id}/pathways',           App\Http\Controllers\KeyPathways\CreateKeyPathwayController::class);
+    Route::patch('keys/{id}/pathways/{id2}',    App\Http\Controllers\KeyPathways\UpdateKeyPathwayController::class);
+    Route::delete('keys/{id}/pathways/{id2}',   App\Http\Controllers\KeyPathways\DeleteKeyPathwayController::class);
+    Route::post('keys/{id}/rooms',              App\Http\Controllers\KeyRooms\CreateKeyRoomController::class);
+    Route::patch('keys/{id}/rooms/{id2}',       App\Http\Controllers\KeyRooms\UpdateKeyRoomController::class);
+    Route::delete('keys/{id}/rooms/{id2}',      App\Http\Controllers\KeyRooms\DeleteKeyRoomController::class);
 
     // Pathways CRUD
-    Route::post('projects/{id}/pathways', CreatePathwayController::class);
-    Route::patch('pathways/{id}', UpdatePathwayController::class);
-    Route::delete('pathways/{id}', DeletePathwayController::class);
+    Route::post('projects/{id}/pathways',       App\Http\Controllers\Pathways\CreatePathwayController::class);
+    Route::patch('pathways/{id}',               App\Http\Controllers\Pathways\UpdatePathwayController::class);
+    Route::delete('pathways/{id}',              App\Http\Controllers\Pathways\DeletePathwayController::class);
 
     // Projects CRUD
-    Route::post('projects', CreateProjectController::class);
-    Route::patch('projects/{id}', UpdateProjectController::class);
-    Route::delete('projects/{id}', DeleteProjectController::class);
+    Route::post('projects',                     App\Http\Controllers\Projects\CreateProjectController::class);
+    Route::patch('projects/{id}',               App\Http\Controllers\Projects\UpdateProjectController::class);
+    Route::delete('projects/{id}',              App\Http\Controllers\Projects\DeleteProjectController::class);
 
     // Rooms CRUD
-    Route::post('projects/{id}/rooms', CreateRoomController::class);
-    Route::patch('rooms/{id}', UpdateRoomController::class);
-    Route::delete('rooms/{id}', DeleteRoomController::class);
+    Route::post('projects/{id}/rooms',          App\Http\Controllers\Rooms\CreateRoomController::class);
+    Route::patch('rooms/{id}',                  App\Http\Controllers\Rooms\UpdateRoomController::class);
+    Route::delete('rooms/{id}',                 App\Http\Controllers\Rooms\DeleteRoomController::class);
 });

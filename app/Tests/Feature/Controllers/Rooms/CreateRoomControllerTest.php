@@ -23,7 +23,7 @@ class CreateRoomControllerTest extends TestCase
             ]);
 
         $response = $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->postJson("/api/projects/{$darkSouls->id}/rooms", [
                 'name'        => $name = 'Firelink Shrine',
                 'description' => 'Time to get LIT',
@@ -75,7 +75,7 @@ class CreateRoomControllerTest extends TestCase
             ]);
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->postJson("/api/projects/{$darkSouls->id}/rooms", [
                 'name'        => 'Firelink Shrine',
                 'description' => 'Time to get LIT',
@@ -95,7 +95,7 @@ class CreateRoomControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $this
-            ->actingAs($user)
+            ->actingAs($user, 'api')
             ->postJson("/api/projects/1/rooms", [
                 'name'        => 'Firelink Shrine',
                 'description' => 'Time to get LIT',

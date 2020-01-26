@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b15a1aa56c50d0b95a4ada600c47e260",
+    "content-hash": "6067e868f7cc5ec84d560ae4ee816cb7",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -2327,6 +2327,7 @@
                 "bcmath",
                 "math"
             ],
+            "abandoned": "brick/math",
             "time": "2017-02-16T16:54:46+00:00"
         },
         {
@@ -5652,7 +5653,7 @@
         },
         {
             "name": "tymon/jwt-auth",
-            "version": "1.0.0-rc.5",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tymondesigns/jwt-auth.git",
@@ -9565,7 +9566,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "socialiteproviders/github": 20,
-        "spatie/laravel-enum": 10
+        "spatie/laravel-enum": 10,
+        "tymon/jwt-auth": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
